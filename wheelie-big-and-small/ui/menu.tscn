@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf28ei3y66nk2"]
+[gd_scene load_steps=7 format=3 uid="uid://cf28ei3y66nk2"]
 
 [ext_resource type="Script" path="res://ui/menu.gd" id="1_dmfxw"]
+[ext_resource type="Theme" uid="uid://ca0voepivqqpx" path="res://ui/menu_theme.tres" id="1_w4wk4"]
+[ext_resource type="Shader" path="res://ui/background_tiling.gdshader" id="2_600v0"]
+[ext_resource type="Texture2D" uid="uid://1wtjagql5tyt" path="res://ui/title screen.png" id="2_jta5f"]
+[ext_resource type="Texture2D" uid="uid://bt4ebd4qilscm" path="res://ui/mephis-pattern-12.jpg" id="3_p2aop"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f28c0"]
+shader = ExtResource("2_600v0")
+shader_parameter/motion = Vector2(-10, -10)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -9,13 +19,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_w4wk4")
 script = ExtResource("1_dmfxw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_f28c0")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_p2aop")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -46.5
+offset_right = 100.0
+offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -23,12 +52,31 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Wheelie Big and Small"
+texture = ExtResource("2_jta5f")
+stretch_mode = 4
 
 [node name="start_btn" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
+
+[node name="spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="credits_btn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Credits"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Credits"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
