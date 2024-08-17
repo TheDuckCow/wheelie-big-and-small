@@ -11,12 +11,23 @@ config_version=5
 [application]
 
 config/name="Wheelie Big and Small"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/road-generator/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://actors/": "green",
+"res://addons/": "purple",
+"res://objects/": "orange",
+"res://scenes/": "blue",
+"res://ui/": "pink"
+}
 
 [rendering]
 
