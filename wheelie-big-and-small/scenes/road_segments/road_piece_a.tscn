@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://deeo68tbg3xv7"]
+
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_1ewx6"]
+[ext_resource type="Material" path="res://addons/road-generator/resources/road_texture.material" id="2_bsedd"]
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_3k3s3"]
+
+[node name="RoadStraight" type="Node3D"]
+script = ExtResource("1_1ewx6")
+material_resource = ExtResource("2_bsedd")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_target_dirs = Array[int]([-1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="RP_001" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 35.9904)
+script = ExtResource("3_3k3s3")
+traffic_dir = [2, 2, 1, 1]
+lanes = [2, 4, 4, 2]
+prior_pt_init = NodePath("../RP_002")
+
+[node name="RP_002" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -46.4783)
+script = ExtResource("3_3k3s3")
+traffic_dir = [2, 2, 1, 1]
+lanes = [2, 4, 4, 2]
+next_pt_init = NodePath("../RP_001")
+prior_mag = 16.0
+next_mag = 16.0

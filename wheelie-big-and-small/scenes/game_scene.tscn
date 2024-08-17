@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://cif8dm16hvfoe"]
+[gd_scene load_steps=4 format=3 uid="uid://cif8dm16hvfoe"]
+
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="1_qk6n7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wj8o5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cs3l"]
+render_priority = 0
+shader = ExtResource("1_qk6n7")
+shader_parameter/speed = null
 
 [node name="GameScene" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_wj8o5")
+surface_material_override/0 = SubResource("ShaderMaterial_2cs3l")
