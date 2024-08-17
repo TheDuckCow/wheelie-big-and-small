@@ -1,16 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://cif8dm16hvfoe"]
+[gd_scene load_steps=10 format=3 uid="uid://cif8dm16hvfoe"]
 
-[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="1_qk6n7"]
+[ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_dmcgd"]
+[ext_resource type="PackedScene" uid="uid://d4dfrt1dtg37l" path="res://actors/player_car/player_car.tscn" id="1_dwy4g"]
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_manager.gd" id="2_2i8oa"]
+[ext_resource type="Script" path="res://actors/player_cam.gd" id="2_h4qlq"]
+[ext_resource type="PackedScene" uid="uid://deeo68tbg3xv7" path="res://scenes/road_segments/road_piece_a.tscn" id="3_oy82i"]
+[ext_resource type="PackedScene" uid="uid://y0c65owdo028" path="res://scenes/road_segments/road_piece_bump.tscn" id="4_fx81w"]
+[ext_resource type="PackedScene" uid="uid://gtq4rtkbl2cq" path="res://ui/hud.tscn" id="4_t4h14"]
+[ext_resource type="PackedScene" uid="uid://dj1pyuediw00s" path="res://scenes/road_segments/road_piece_overpass.tscn" id="6_crtss"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_wj8o5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cs3l"]
-render_priority = 0
-shader = ExtResource("1_qk6n7")
-shader_parameter/speed = null
+[sub_resource type="Environment" id="Environment_20ldg"]
+background_mode = 1
+background_color = Color(0.929715, 0.929715, 0.929715, 1)
 
 [node name="GameScene" type="Node3D"]
+script = ExtResource("1_dmcgd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_wj8o5")
-surface_material_override/0 = SubResource("ShaderMaterial_2cs3l")
+[node name="PlayerCar" parent="." instance=ExtResource("1_dwy4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90454, 10.8992)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCar"]
+transform = Transform3D(1, 0, 0, 0, 0.968016, 0.250887, 0, -0.250887, 0.968016, 0, 2.5615, 3.60922)
+script = ExtResource("2_h4qlq")
+
+[node name="RoadManager" type="Node3D" parent="."]
+script = ExtResource("2_2i8oa")
+density = 5.0
+auto_refresh = false
+
+[node name="RoadStraight" parent="RoadManager" instance=ExtResource("3_oy82i")]
+
+[node name="RoadBump" parent="RoadManager" instance=ExtResource("4_fx81w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -82.4633)
+
+[node name="RoadStraight2" parent="RoadManager" instance=ExtResource("6_crtss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -178.275)
+
+[node name="RoadStraight3" parent="RoadManager" instance=ExtResource("3_oy82i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -229.869)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.785393, 0.51442, -0.344283, 0, 0.556194, 0.831052, 0.618998, -0.652702, 0.436831, 0, 4.06826, 0)
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_20ldg")
+
+[node name="HUD" parent="." instance=ExtResource("4_t4h14")]
+target = NodePath("../PlayerCar")
