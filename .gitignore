@@ -20,4 +20,4 @@ assets/
 # always be generated locally by exporters, thus changes ignored.
 src/build_info.cfg
 
-.godot/**
+wheelie-big-and-small/.godot/**
