@@ -8,8 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://gtq4rtkbl2cq" path="res://ui/hud.tscn" id="4_t4h14"]
 [ext_resource type="PackedScene" uid="uid://dj1pyuediw00s" path="res://scenes/road_segments/road_piece_overpass.tscn" id="6_crtss"]
 [ext_resource type="PackedScene" uid="uid://c0uvck8pqvfku" path="res://actors/obstacles/speed_bump.tscn" id="8_g4wif"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://actors/smooth_follow.gd" id="9_d2vaw"]
 [ext_resource type="Script" path="res://actors/camera_fov.gd" id="10_yq1xe"]
+=======
+[ext_resource type="PackedScene" uid="uid://cocjfjp2rxq35" path="res://actors/obstacles/death_barrel.tscn" id="9_x2mbc"]
+>>>>>>> main
 
 [sub_resource type="Environment" id="Environment_20ldg"]
 background_mode = 1
@@ -39,6 +43,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -229.869)
 
 [node name="SpeedBump" parent="RoadManager" instance=ExtResource("8_g4wif")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.30049, 1.00312, -152.222)
+
+[node name="DeathBarrel" parent="RoadManager" instance=ExtResource("9_x2mbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971565, 1, -33.6198)
+
+[node name="DeathBarrel2" parent="RoadManager" instance=ExtResource("9_x2mbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24648, 1, -35.2173)
+
+[node name="DeathBarrel3" parent="RoadManager" instance=ExtResource("9_x2mbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99991, 1, -33.9471)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.785393, 0.51442, -0.344283, 0, 0.556194, 0.831052, 0.618998, -0.652702, 0.436831, 0, 4.06826, 0)
