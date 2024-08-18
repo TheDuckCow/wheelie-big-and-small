@@ -1,37 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4dfrt1dtg37l"]
+[gd_scene load_steps=5 format=3 uid="uid://d4dfrt1dtg37l"]
 
 [ext_resource type="Script" path="res://actors/player_car/player_car.gd" id="1_ocetw"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_1uafx"]
-size = Vector3(0.9, 0.7, 2.258)
+[sub_resource type="BoxShape3D" id="BoxShape3D_c27qk"]
+size = Vector3(1, 1, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jrj8r"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4r3b"]
+albedo_color = Color(0, 0.827451, 0.556863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0obkt"]
 
 [node name="PlayerCar" type="CharacterBody3D"]
 script = ExtResource("1_ocetw")
 
-[node name="root" type="Node3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_c27qk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="root"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.351144, 0)
-mesh = SubResource("BoxMesh_1uafx")
-skeleton = NodePath("../..")
+[node name="Mesh" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="root/MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_w4r3b")
+mesh = SubResource("BoxMesh_0obkt")
 
-[node name="col_bottom_center" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
-shape = SubResource("BoxShape3D_jrj8r")
-
-[node name="col_front_center" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.381378, -1.07363)
-shape = SubResource("BoxShape3D_jrj8r")
-
-[node name="col_front_left" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333519, 0.381378, -1.07363)
-shape = SubResource("BoxShape3D_jrj8r")
-
-[node name="col_front_right" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350996, 0.381378, -1.07363)
-shape = SubResource("BoxShape3D_jrj8r")
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 1)

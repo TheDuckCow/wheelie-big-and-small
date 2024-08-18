@@ -5,26 +5,18 @@ const LANE_CHANGE_SPEED = 30.0
 const ACCELERATION := 10.0
 const BRAKE := 5.0
 const COAST_FAC := 0.5
+const MAX_SPEED := 120.0  # Maximum speed
 
 # Used throughout game to reference the "rest" position in 3d editor,
 # since the car will be made both larger and smaller
 const REST_SPEED := 10.0
+const SCALE_SMOOTHING := 3.0 # smoothness of the scaling
 
-## Colliders and rest positions, which we'll move around as the car scales
-@onready var col_bottom_center := $col_bottom_center
-@onready var col_bottom_center_rest: Vector3 = col_bottom_center.position
-@onready var col_front_center := $col_front_center
-@onready var col_front_center_rest: Vector3 = col_front_center.position
-@onready var col_front_left := $col_front_left
-@onready var col_front_left_rest: Vector3 = col_front_left.position
-@onready var col_front_right := $col_front_right
-@onready var col_front_right_rest: Vector3 = col_front_right.position
-
-@onready var mesh_root := $root
+var target_scale: float = 1.0
+@onready var player_car = $"."
 
 func _ready() -> void:
 	pass
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -48,9 +40,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, xfac * 1.5 * delta)
 		velocity.z = move_toward(velocity.z, 0, COAST_FAC * delta)
 	
-	# Dont' allow going backwards
+	# Prevent going backwards
 	if velocity.z > 0:
 		velocity.z = 0
+
+	# Clamp the speed to the maximum allowed speed
+	velocity.z = max(velocity.z, -MAX_SPEED)
 	
 	# Now assert the size of the player based on the speed
 	set_size(delta)
@@ -58,18 +53,21 @@ func _physics_process(delta: float) -> void:
 	# Move the player
 	move_and_slide()
 
-
 ## Generic function to calc speed, used in UI too
 func get_speed() -> float:
 	return -velocity.z
 
-
 func get_target_size() -> float:
 	var fwd_speed:float = get_speed()
-	# Might wnat to change how we further remap the size here
+	# Might want to change how we further remap the size here
 	var apply_scale = clamp(fwd_speed / REST_SPEED, 0.1, 100.0)
 	return apply_scale
 
-func set_size(_delta) -> void:
-	mesh_root.scale = Vector3.ONE * get_target_size()
-	
+func set_size(delta: float) -> void:
+	var current_scale = player_car.scale.x
+	target_scale = get_target_size()
+	var new_scale = lerp(current_scale, target_scale, SCALE_SMOOTHING * delta)
+	player_car.scale = Vector3(new_scale, new_scale, new_scale)
+
+func set_speed(input: float) -> void:
+	velocity.z = -abs(input)
