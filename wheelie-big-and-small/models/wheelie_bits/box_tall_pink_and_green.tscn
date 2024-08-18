@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=4 uid="uid://blb61i2rojnuq"]
+[gd_scene load_steps=10 format=4 uid="uid://blb61i2rojnuq"]
+
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="1_nhxhe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpkbr"]
 resource_name = "Black"
@@ -97,7 +99,31 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p8l1g")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8j3b5"]
+render_priority = 0
+shader = ExtResource("1_nhxhe")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/col = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2pve"]
+render_priority = 0
+shader = ExtResource("1_nhxhe")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/col = Color(0.528354, 0.178272, 0.599016, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uba7"]
+render_priority = 0
+shader = ExtResource("1_nhxhe")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/col = Color(0.267873, 0.501053, 0.228123, 1)
+
 [node name="BOX - TALL - PINK AND GREEN" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7888, 0, 0)
 mesh = SubResource("ArrayMesh_l1ihr")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_8j3b5")
+surface_material_override/1 = SubResource("ShaderMaterial_u2pve")
+surface_material_override/2 = SubResource("ShaderMaterial_8uba7")
