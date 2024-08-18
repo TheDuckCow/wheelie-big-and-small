@@ -5,10 +5,9 @@ extends Camera3D
 @export var max_fov: float = 90.0
 @export var max_speed: float = 120.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if player:
-		# Get the player's velocity assuming it has a RigidBody3D or CharacterBody3D
+		# Get the player's velocity 
 		var velocity = player.get("velocity")
 		
 		# Calculate the speed (magnitude of velocity)

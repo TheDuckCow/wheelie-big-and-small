@@ -10,7 +10,7 @@ const MAX_SPEED := 120.0  # Maximum speed
 # Used throughout game to reference the "rest" position in 3d editor,
 # since the car will be made both larger and smaller
 const REST_SPEED := 10.0
-const SCALE_SMOOTHING := 3.0 # Adjust this value to control the smoothness of the scaling
+const SCALE_SMOOTHING := 3.0 # smoothness of the scaling
 
 var target_scale: float = 1.0
 @onready var player_car = $"."
