@@ -1,0 +1,23 @@
+.DS_Store
+.import
+builds
+*.blend1
+*.sublime*
+src/addons
+src/tests/results.xml
+src/tests/test_metadata.json
+src/tests/screens/hud/_prntscrn*
+src/tests/actors/cars/_plate*
+src/results.xml
+src/tests/metadata.json
+fb_env_dev.txt
+fb_env_prod.txt
+*.log
+assets/
+.gut_editor_shortcuts.cfg
+
+# Default file included in repo to avoid warnings, but generally should
+# always be generated locally by exporters, thus changes ignored.
+src/build_info.cfg
+
+wheelie-big-and-small/.godot/**
