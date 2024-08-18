@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1wtjagql5tyt" path="res://ui/title screen.png" id="2_jta5f"]
 [ext_resource type="Texture2D" uid="uid://bt4ebd4qilscm" path="res://ui/mephis-pattern-12.jpg" id="3_p2aop"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f28c0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tjs2l"]
 shader = ExtResource("2_600v0")
 shader_parameter/motion = Vector2(-10, -10)
 shader_parameter/scale = 1.0
@@ -23,7 +23,7 @@ theme = ExtResource("1_w4wk4")
 script = ExtResource("1_dmfxw")
 
 [node name="background" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_f28c0")
+material = SubResource("ShaderMaterial_tjs2l")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
