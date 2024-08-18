@@ -22,6 +22,7 @@ const REST_SPEED := 10.0
 
 @onready var mesh_root := $root
 
+
 func _ready() -> void:
 	pass
 
@@ -70,6 +71,10 @@ func get_target_size() -> float:
 	var apply_scale = clamp(fwd_speed / REST_SPEED, 0.1, 100.0)
 	return apply_scale
 
+
 func set_size(_delta) -> void:
 	mesh_root.scale = Vector3.ONE * get_target_size()
 	
+
+func set_speed(input: float) -> void:
+	velocity.z = -abs(input)
