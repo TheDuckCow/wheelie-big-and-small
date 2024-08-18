@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cif8dm16hvfoe"]
+[gd_scene load_steps=11 format=3 uid="uid://cif8dm16hvfoe"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_dmcgd"]
 [ext_resource type="PackedScene" uid="uid://d4dfrt1dtg37l" path="res://actors/player_car/player_car.tscn" id="1_dwy4g"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://y0c65owdo028" path="res://scenes/road_segments/road_piece_bump.tscn" id="4_fx81w"]
 [ext_resource type="PackedScene" uid="uid://gtq4rtkbl2cq" path="res://ui/hud.tscn" id="4_t4h14"]
 [ext_resource type="PackedScene" uid="uid://dj1pyuediw00s" path="res://scenes/road_segments/road_piece_overpass.tscn" id="6_crtss"]
+[ext_resource type="PackedScene" uid="uid://c0uvck8pqvfku" path="res://actors/obstacles/speed_bump.tscn" id="8_g4wif"]
 
 [sub_resource type="Environment" id="Environment_20ldg"]
 background_mode = 1
@@ -38,6 +39,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -178.275)
 
 [node name="RoadStraight3" parent="RoadManager" instance=ExtResource("3_oy82i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -229.869)
+
+[node name="SpeedBump" parent="RoadManager" instance=ExtResource("8_g4wif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.30049, 1.00312, -152.222)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.785393, 0.51442, -0.344283, 0, 0.556194, 0.831052, 0.618998, -0.652702, 0.436831, 0, 4.06826, 0)
