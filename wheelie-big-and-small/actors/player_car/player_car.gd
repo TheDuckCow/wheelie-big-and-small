@@ -9,6 +9,7 @@ const COAST_FAC := 0.5
 # Used throughout game to reference the "rest" position in 3d editor,
 # since the car will be made both larger and smaller
 const REST_SPEED := 10.0
+const SCALE_SMOOTHING := 3.0 # Adjust this value to control the smoothness of the scaling
 
 ## Colliders and rest positions, which we'll move around as the car scales
 @onready var col_bottom_center := $col_bottom_center
@@ -21,7 +22,8 @@ const REST_SPEED := 10.0
 @onready var col_front_right_rest: Vector3 = col_front_right.position
 
 @onready var mesh_root := $root
-
+var target_scale: float = 1.0
+@onready var player_car = $"."
 
 func _ready() -> void:
 	pass
@@ -72,9 +74,11 @@ func get_target_size() -> float:
 	return apply_scale
 
 
-func set_size(_delta) -> void:
-	mesh_root.scale = Vector3.ONE * get_target_size()
-	
+func set_size(delta: float) -> void:
+	var current_scale = player_car.scale.x
+	target_scale = get_target_size()
+	var new_scale = lerp(current_scale, target_scale, SCALE_SMOOTHING * delta)
+	player_car.scale = Vector3(new_scale, new_scale, new_scale)
 
 func set_speed(input: float) -> void:
 	velocity.z = -abs(input)
