@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://drjkxd8c53qpw"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_6onf3"]
-[ext_resource type="Material" uid="uid://qvij0p1lxxjb" path="res://materials/road_mat.material" id="2_x55la"]
+[ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_cskd0"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_ec45n"]
 [ext_resource type="Script" path="res://actors/obstacles/random_speed_bump.gd" id="4_in0ba"]
 [ext_resource type="PackedScene" uid="uid://c0uvck8pqvfku" path="res://actors/obstacles/speed_bump.tscn" id="4_mkigk"]
 
 [node name="RoadStraight" type="Node3D"]
 script = ExtResource("1_6onf3")
-material_resource = ExtResource("2_x55la")
+material_resource = ExtResource("2_cskd0")
 use_lowpoly_preview = true
 edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
 edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])

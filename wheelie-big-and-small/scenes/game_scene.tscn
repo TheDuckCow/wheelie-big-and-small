@@ -1,16 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cif8dm16hvfoe"]
+[gd_scene load_steps=10 format=3 uid="uid://cif8dm16hvfoe"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_dmcgd"]
 [ext_resource type="PackedScene" uid="uid://d4dfrt1dtg37l" path="res://actors/player_car/player_car.tscn" id="1_dwy4g"]
-[ext_resource type="Script" path="res://addons/road-generator/nodes/road_manager.gd" id="2_2i8oa"]
 [ext_resource type="PackedScene" uid="uid://deeo68tbg3xv7" path="res://scenes/road_segments/road_piece_a.tscn" id="3_oy82i"]
-[ext_resource type="PackedScene" uid="uid://y0c65owdo028" path="res://scenes/road_segments/road_piece_bump.tscn" id="4_fx81w"]
+[ext_resource type="Script" path="res://scenes/road_segments/road_placer.gd" id="3_vo8t4"]
 [ext_resource type="PackedScene" uid="uid://gtq4rtkbl2cq" path="res://ui/hud.tscn" id="4_t4h14"]
-[ext_resource type="PackedScene" uid="uid://dj1pyuediw00s" path="res://scenes/road_segments/road_piece_overpass.tscn" id="6_crtss"]
-[ext_resource type="PackedScene" uid="uid://c0uvck8pqvfku" path="res://actors/obstacles/speed_bump.tscn" id="8_g4wif"]
 [ext_resource type="Script" path="res://actors/smooth_follow.gd" id="9_d2vaw"]
 [ext_resource type="Script" path="res://actors/camera_fov.gd" id="10_yq1xe"]
-[ext_resource type="PackedScene" uid="uid://cocjfjp2rxq35" path="res://actors/obstacles/death_barrel.tscn" id="11_41xih"]
 [ext_resource type="PackedScene" uid="uid://cwkm7mqhwe4ob" path="res://actors/cars/car01.tscn" id="12_804bc"]
 
 [sub_resource type="Environment" id="Environment_20ldg"]
@@ -24,23 +20,11 @@ script = ExtResource("1_dmcgd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90454, 10.8992)
 
 [node name="RoadManager" type="Node3D" parent="."]
-script = ExtResource("2_2i8oa")
+script = ExtResource("3_vo8t4")
 density = 5.0
 auto_refresh = false
 
 [node name="RoadStraight" parent="RoadManager" instance=ExtResource("3_oy82i")]
-
-[node name="RoadBump" parent="RoadManager" instance=ExtResource("4_fx81w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -82.4633)
-
-[node name="RoadStraight2" parent="RoadManager" instance=ExtResource("6_crtss")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -178.275)
-
-[node name="RoadStraight3" parent="RoadManager" instance=ExtResource("3_oy82i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -229.869)
-
-[node name="SpeedBump" parent="RoadManager" instance=ExtResource("8_g4wif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.30049, 1.00312, -152.222)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.565341, 0.685499, -0.458781, -1.48769e-08, 0.556194, 0.831052, 0.824858, 0.469828, -0.31444, 0, 4.06826, 0)
@@ -63,22 +47,19 @@ offset = Vector3(0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 script = ExtResource("10_yq1xe")
 
-[node name="DeathBarrel" parent="." instance=ExtResource("11_41xih")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16445, 1, -14.0742)
-
 [node name="car01" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18451, 1.06587, 4.90465)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 2.18451, 1.06587, -7.07004)
 
 [node name="car02" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73642, 1.06587, -2.83965)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.73642, 1.06587, -14.8143)
 
 [node name="car03" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29945, 1.06587, -11.7472)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.29945, 1.06587, -23.7219)
 
 [node name="car04" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57852, 1.06587, -22.0396)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.57852, 1.06587, -34.0143)
 
 [node name="car05" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82064, 1.06587, -29.7078)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.82064, 1.06587, -41.6825)
 
 [editable path="PlayerCar"]

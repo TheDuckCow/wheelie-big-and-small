@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name PlayerCar
 
 const LANE_CHANGE_SPEED = 30.0
-const ACCELERATION := 10.0
+const ACCELERATION := 14.0
 const BRAKE := 8.0
 const COAST_FAC := 0.5
 const MAX_SPEED := 50.0 
