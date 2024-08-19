@@ -72,7 +72,7 @@ func get_speed() -> float:
 func get_target_size() -> float:
 	var fwd_speed: float = get_speed()
 	var normalized_speed = clamp((fwd_speed - 10) / (MAX_SPEED - 10), 0.01, 1.0)
-	var scale_factor = log(1.0 + normalized_speed * 24.0) # Adjust 9.0 to scale the size range
+	var scale_factor = log(1.0 + normalized_speed * 24.0)
 	return scale_factor
 
 func set_size(delta: float) -> void:

@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://actors/smooth_follow.gd" id="9_d2vaw"]
 [ext_resource type="Script" path="res://actors/camera_fov.gd" id="10_yq1xe"]
 [ext_resource type="PackedScene" uid="uid://cocjfjp2rxq35" path="res://actors/obstacles/death_barrel.tscn" id="11_41xih"]
-[ext_resource type="PackedScene" uid="uid://b4gkb4a6n7x1j" path="res://actors/cars/car01.tscn" id="12_804bc"]
+[ext_resource type="PackedScene" uid="uid://cwkm7mqhwe4ob" path="res://actors/cars/car01.tscn" id="12_804bc"]
 
 [sub_resource type="Environment" id="Environment_20ldg"]
 background_mode = 1
