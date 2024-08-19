@@ -39,6 +39,10 @@ folder_colors={
 "res://ui/": "pink"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

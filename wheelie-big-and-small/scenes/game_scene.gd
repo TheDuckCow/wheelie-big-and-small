@@ -32,6 +32,7 @@ func run_time_s() -> float:
 
 
 func _run_ended(source_node: Node) -> void:
+	get_tree().paused = true
 	print("The run was ended by: ", source_node)
 	if ended:
 		print("Was already ended...")
@@ -46,5 +47,6 @@ func _run_ended(source_node: Node) -> void:
 
 
 func restart() -> void:
+	get_tree().paused = false
 	var res = get_tree().reload_current_scene()
 	assert(res == OK)

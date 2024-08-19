@@ -13,14 +13,24 @@ const MIN_SPEED := 10.0
 const REST_SPEED := 10.0
 const SCALE_SMOOTHING := 3.0 # smoothness of the scaling
 
+
+enum State {
+	RUNNING,
+	ENDED
+}
+var state:int = State.RUNNING
+
 var target_scale: float = 1.0
 
 @onready var player_car = $"."
 
-func _ready() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
+	
+	if global_transform.origin.y < 0 and state == State.RUNNING:
+		Signals.run_ended.emit(self)
+		state = State.ENDED
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

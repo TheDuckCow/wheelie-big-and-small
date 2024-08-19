@@ -36,7 +36,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func restart_game() -> void:
 	# SceneTransition.to_scene("res://scenes/game_scene.gd")
-	emit_signal("on_restart_game")
+	get_tree().paused = false
+	on_restart_game.emit()
 
 
 func _on_retry_pressed() -> void:
@@ -44,4 +45,6 @@ func _on_retry_pressed() -> void:
 
 
 func _on_menu_pressed() -> void:
+	get_tree().paused = false
+	print("Did press happen?")
 	SceneTransition.to_scene("res://ui/menu.tscn")
