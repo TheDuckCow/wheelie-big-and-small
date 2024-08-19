@@ -12,10 +12,6 @@ uniform sampler2D color_texture: source_color;
 uniform sampler2D normal_map_texture;
 uniform sampler2D noise_texture;
 
-void fragment() {
-	ALBEDO = texture(color_texture, UV).rgb;
-	NORMAL_MAP = texture(normal_map_texture, UV).xyz;
-}
 
 mat2 rotate(float theta) {
 	return mat2(vec2(cos(theta), -sin(theta)),
@@ -114,18 +110,34 @@ vec2 voronoi_noise_coord(vec2 p, float r) {
 	return rotate(theta*TAU)*coord;
 }
 
-void light() {
-	vec2 coords = rotate(radians(angle))*((FRAGCOORD.xy-VIEWPORT_SIZE.xy*0.5f)/VIEWPORT_SIZE.x);
-	vec2 coords2 = rotate(angle2)*coords;
+varying float LINE;
+varying float DOTS;
+varying float STARS;
 
-	float line_offset = sin(coords.y*TAU*6.0f)/32.0f;
-	float line = coords.x + line_offset + FRAGCOORD.z*0.5f;
-	line = abs(fract(line*128.0f)*2.0 - 1.0);
+varying vec2 COORDS0;
+varying vec2 COORDS1;
 
-	float dots = voronoi_noise((coords + vec2(FRAGCOORD.z*0.25f, 0.0f))*64.0, 0.5f)*4.0f;
-	vec2 star_coords = voronoi_noise_coord((coords2 + vec2(FRAGCOORD.z*0.25f, 0.0f))*16.0f, 1.0f);
+void fragment() {
+	ALBEDO = texture(color_texture, UV).rgb;
+	if (textureSize(normal_map_texture, 0).x > 16) {
+		NORMAL_MAP = texture(normal_map_texture, UV).xyz;
+	}
+
+	COORDS0 = rotate(radians(angle))*((FRAGCOORD.xy-VIEWPORT_SIZE.xy*0.5f)/VIEWPORT_SIZE.x);
+	COORDS1 = rotate(angle2)*COORDS0;
+
+	float line_offset = sin(COORDS0.y*TAU*6.0f)/32.0f;
+	float line = COORDS0.x + line_offset + FRAGCOORD.z*0.5f;
+	LINE = abs(fract(line*128.0f)*2.0 - 1.0);
+
+	DOTS = voronoi_noise((COORDS0 + vec2(FRAGCOORD.z*0.25f, 0.0f))*64.0, 0.5f)*4.0f;
+
+	vec2 star_coords = voronoi_noise_coord((COORDS1 + vec2(FRAGCOORD.z*0.25f, 0.0f))*16.0f, 1.0f);
 	float stars = sdStar5(star_coords*2.0f, 0.5f, 0.5f);
-	stars = 1.0f - squoosh(stars, 0.0f, 32.0f);
+	STARS = 1.0f - squoosh(stars, 0.0f, 32.0f);
+}
+
+void light() {
 	float light = dot(NORMAL, LIGHT);
 	float light_sign = sign(light);
 	light = abs(light);
@@ -133,29 +145,26 @@ void light() {
 	light = light*light_sign*0.5f + 0.5f;
 
 	float new_light = light;
+	
+	vec3 lit = light*ALBEDO*LIGHT_COLOR*col.rgb;
 
 	vec3 light_color = mix(
-		light*ALBEDO*LIGHT_COLOR*col.rgb,
+		lit,
 		col_light.rgb,
-		(1.0f - squoosh(dots-light, 0.66666f, 8.0f))*col_light.a
+		(1.0f - squoosh(DOTS-new_light, 0.66666f, 8.0f))*col_light.a
 	);
 
 	light_color = mix(
 		light_color,
 		col_star.rgb*col.a,
-		stars*col_star.a
+		STARS*col_star.a
 	);
 
 	vec3 dark_color = mix(
-		light*ALBEDO*LIGHT_COLOR*col.rgb,
+		lit,
 		col_dark.rgb,
-		(1.0 - squoosh(1.0f - ((1.0f - ATTENUATION) - line*0.75f), 0.5, 16.0))*col_dark.a
+		(1.0 - squoosh(1.0f - ((1.0f - ATTENUATION) - LINE*0.75f), 0.5, 16.0))*col_dark.a
 	);
 
-#if 1
 	DIFFUSE_LIGHT += mix(dark_color, light_color, squoosh(ATTENUATION, 1.0, 2.0));
-#else
-	DIFFUSE_LIGHT.xy = star_coords;
-	DIFFUSE_LIGHT.z = 0.0;
-#endif
 }
