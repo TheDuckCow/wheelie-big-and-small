@@ -36,6 +36,7 @@ func _run_ended(source_node: Node) -> void:
 	if ended:
 		print("Was already ended...")
 		return
+	get_tree().paused = true
 	Data.current_score_msec = run_time_msec()
 	ended = true # must assign this AFTER assigning the score above
 
@@ -46,5 +47,6 @@ func _run_ended(source_node: Node) -> void:
 
 
 func restart() -> void:
+	get_tree().paused = false
 	var res = get_tree().reload_current_scene()
 	assert(res == OK)

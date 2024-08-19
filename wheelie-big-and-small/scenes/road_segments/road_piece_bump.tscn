@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://y0c65owdo028"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_ns070"]
-[ext_resource type="Material" uid="uid://qvij0p1lxxjb" path="res://materials/road_mat.material" id="2_eqek6"]
+[ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_inesw"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_l00qa"]
 
 [node name="RoadBump" type="Node3D"]
 script = ExtResource("1_ns070")
-material_resource = ExtResource("2_eqek6")
+material_resource = ExtResource("2_inesw")
 use_lowpoly_preview = true
 edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
 edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])

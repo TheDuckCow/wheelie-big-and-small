@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://drjkxd8c53qpw"]
+
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_6onf3"]
+[ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_cskd0"]
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_ec45n"]
+[ext_resource type="Script" path="res://actors/obstacles/random_speed_bump.gd" id="4_in0ba"]
+[ext_resource type="PackedScene" uid="uid://c0uvck8pqvfku" path="res://actors/obstacles/speed_bump.tscn" id="4_mkigk"]
+
+[node name="RoadStraight" type="Node3D"]
+script = ExtResource("1_6onf3")
+material_resource = ExtResource("2_cskd0")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_target_dirs = Array[int]([-1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="RP_001" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
+script = ExtResource("3_ec45n")
+traffic_dir = [1, 1, 1, 1]
+lanes = [0, 3, 3, 2]
+prior_pt_init = NodePath("../RP_002")
+
+[node name="RP_002" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10)
+script = ExtResource("3_ec45n")
+traffic_dir = [1, 1, 1, 1]
+lanes = [0, 3, 3, 2]
+next_pt_init = NodePath("../RP_001")
+prior_mag = 16.0
+next_mag = 16.0
+
+[node name="RandomSpeedBump" type="Node3D" parent="."]
+script = ExtResource("4_in0ba")
+
+[node name="SpeedBump" parent="RandomSpeedBump" instance=ExtResource("4_mkigk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84478, 0.945729, -6.32027)
+
+[node name="SpeedBump2" parent="RandomSpeedBump" instance=ExtResource("4_mkigk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11468, 0.945729, -6.32027)
+
+[node name="SpeedBump3" parent="RandomSpeedBump" instance=ExtResource("4_mkigk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93337, 0.945729, -6.32027)
+
+[node name="SpeedBump4" parent="RandomSpeedBump" instance=ExtResource("4_mkigk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17349, 0.945729, -6.32027)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.995162, 0, 0.098243, 0, 1, 0, -0.098243, 0, -0.995162, 9.83327, 0, -34.3918)
