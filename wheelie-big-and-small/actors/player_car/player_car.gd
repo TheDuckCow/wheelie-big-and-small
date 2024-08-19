@@ -12,13 +12,15 @@ const MAX_SPEED := 120.0  # Maximum speed
 const REST_SPEED := 10.0
 const SCALE_SMOOTHING := 3.0 # smoothness of the scaling
 
+
 var target_scale: float = 1.0
 @onready var player_car = $"."
 
-func _ready() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
+	
+	if global_transform.origin.y < 0:
+		Signals.run_ended.emit(self)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
