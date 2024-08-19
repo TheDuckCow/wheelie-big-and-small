@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dj1pyuediw00s"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_8yndm"]
-[ext_resource type="Material" uid="uid://qvij0p1lxxjb" path="res://materials/road_mat.material" id="2_cuoa7"]
+[ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_wnpn7"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_2q6hj"]
 [ext_resource type="Texture2D" uid="uid://c6otl6kasyq43" path="res://materials/mephis-pattern-8.jpg" id="4_p0ww5"]
 
@@ -29,7 +29,7 @@ data = PackedVector3Array(0, 10, 8, 0.7841, 10, 7.9615, 0, 6, 8, 0.7841, 10, 7.9
 
 [node name="RoadStraight" type="Node3D"]
 script = ExtResource("1_8yndm")
-material_resource = ExtResource("2_cuoa7")
+material_resource = ExtResource("2_wnpn7")
 use_lowpoly_preview = true
 edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
 edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])

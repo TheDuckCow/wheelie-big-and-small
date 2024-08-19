@@ -1,34 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4gkb4a6n7x1j"]
+[gd_scene load_steps=6 format=3 uid="uid://b4gkb4a6n7x1j"]
 
 [ext_resource type="PackedScene" uid="uid://dwjechfaym2gf" path="res://actors/cars/car01.glb" id="1_1nh2b"]
 [ext_resource type="Script" path="res://actors/cars/npc_car.gd" id="2_algni"]
-[ext_resource type="Material" uid="uid://d0sxo2rq572al" path="res://actors/cars/car_mat.material" id="5_3hxtc"]
+[ext_resource type="Material" uid="uid://h1go4sooje1o" path="res://materials/car_trimsheet/car_shader.material" id="3_d818o"]
+[ext_resource type="Material" uid="uid://dc7ytoilodeeu" path="res://materials/car_trimsheet/tire_mat.material" id="4_242ib"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q6rcb"]
 size = Vector3(2.66235, 3.76166, 5.50568)
 
 [node name="car01" groups=["obstacle"] instance=ExtResource("1_1nh2b")]
 script = ExtResource("2_algni")
+base_mesh_path = NodePath("car01")
 
 [node name="car01" parent="." index="0"]
 transform = Transform3D(0.301632, 0, 0, 0, 0.301632, 0, 0, 0, 0.301632, 3.03735e-07, 0.0126051, 0.403474)
-surface_material_override/0 = ExtResource("5_3hxtc")
+surface_material_override/0 = ExtResource("3_d818o")
 
 [node name="car01_tire_r_f" parent="." index="1"]
 transform = Transform3D(0.301632, 0, 0, 0, 0.301632, 0, 0, 0, 0.301632, 1.43131, 0.314238, -1.19729)
-surface_material_override/0 = ExtResource("5_3hxtc")
+surface_material_override/0 = ExtResource("4_242ib")
 
 [node name="car01_tire_l_b_001" parent="." index="2"]
 transform = Transform3D(0.301632, 0, 0, 0, 0.301632, 0, 0, 0, 0.301632, 1.44997, 0.314238, 1.23654)
-surface_material_override/0 = ExtResource("5_3hxtc")
+surface_material_override/0 = ExtResource("4_242ib")
 
 [node name="car01_tire_l_f" parent="." index="3"]
 transform = Transform3D(0.301632, 0, 0, 0, 0.301632, 0, 0, 0, 0.301632, -1.4313, 0.314238, -1.19729)
-surface_material_override/0 = ExtResource("5_3hxtc")
+surface_material_override/0 = ExtResource("4_242ib")
 
 [node name="car01_tire_l_b" parent="." index="4"]
 transform = Transform3D(0.301632, 0, 0, 0, 0.301632, 0, 0, 0, 0.301632, -1.44997, 0.314238, 1.23654)
-surface_material_override/0 = ExtResource("5_3hxtc")
+surface_material_override/0 = ExtResource("4_242ib")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94681, 0.0940247)

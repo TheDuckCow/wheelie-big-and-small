@@ -43,8 +43,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -229.869)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.30049, 1.00312, -152.222)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.785393, 0.51442, -0.344283, 0, 0.556194, 0.831052, 0.618998, -0.652702, 0.436831, 0, 4.06826, 0)
-directional_shadow_mode = 0
+transform = Transform3D(-0.565341, 0.685499, -0.458781, -1.48769e-08, 0.556194, 0.831052, 0.824858, 0.469828, -0.31444, 0, 4.06826, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_20ldg")
@@ -67,6 +67,18 @@ script = ExtResource("10_yq1xe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16445, 1, -14.0742)
 
 [node name="car01" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40585, 2.00962, -5.10159)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18451, 1.06587, 4.90465)
+
+[node name="car02" parent="." instance=ExtResource("12_804bc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73642, 1.06587, -2.83965)
+
+[node name="car03" parent="." instance=ExtResource("12_804bc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29945, 1.06587, -11.7472)
+
+[node name="car04" parent="." instance=ExtResource("12_804bc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57852, 1.06587, -22.0396)
+
+[node name="car05" parent="." instance=ExtResource("12_804bc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82064, 1.06587, -29.7078)
 
 [editable path="PlayerCar"]

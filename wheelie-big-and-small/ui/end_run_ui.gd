@@ -36,7 +36,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func restart_game() -> void:
 	# SceneTransition.to_scene("res://scenes/game_scene.gd")
-	emit_signal("on_restart_game")
+	on_restart_game.emit()
 
 
 func _on_retry_pressed() -> void:

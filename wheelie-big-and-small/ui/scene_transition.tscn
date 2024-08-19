@@ -19,7 +19,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_birfb"]
 resource_name = "dissolve"
-length = 0.3
+length = 0.3667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
