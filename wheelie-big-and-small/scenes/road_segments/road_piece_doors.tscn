@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdfkpw8hradom"]
+
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_qfxpi"]
+[ext_resource type="Material" uid="uid://qvij0p1lxxjb" path="res://materials/road_mat.material" id="2_nhd05"]
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_lt5n2"]
+[ext_resource type="PackedScene" uid="uid://dm8x3tqa6cc4q" path="res://actors/obstacles/death_doors.tscn" id="4_1lbva"]
+
+[node name="RoadStraight" type="Node3D"]
+script = ExtResource("1_qfxpi")
+material_resource = ExtResource("2_nhd05")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_target_dirs = Array[int]([-1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="RP_001" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
+script = ExtResource("3_lt5n2")
+traffic_dir = [1, 1, 1, 1]
+lanes = [0, 3, 3, 2]
+prior_pt_init = NodePath("../RP_002")
+
+[node name="RP_002" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10)
+script = ExtResource("3_lt5n2")
+traffic_dir = [1, 1, 1, 1]
+lanes = [0, 3, 3, 2]
+next_pt_init = NodePath("../RP_001")
+prior_mag = 16.0
+next_mag = 16.0
+
+[node name="DeathDoors" parent="." instance=ExtResource("4_1lbva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0876253, 2.5713, -9.75073)

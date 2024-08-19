@@ -21,6 +21,10 @@ SceneTransition="*res://ui/scene_transition.tscn"
 Signals="*res://logic/signals.gd"
 Data="*res://logic/data.gd"
 
+[dotnet]
+
+project/assembly_name="Wheelie Big and Small"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/road-generator/plugin.cfg")
