@@ -32,11 +32,11 @@ func run_time_s() -> float:
 
 
 func _run_ended(source_node: Node) -> void:
-	get_tree().paused = true
 	print("The run was ended by: ", source_node)
 	if ended:
 		print("Was already ended...")
 		return
+	get_tree().paused = true
 	Data.current_score_msec = run_time_msec()
 	ended = true # must assign this AFTER assigning the score above
 
