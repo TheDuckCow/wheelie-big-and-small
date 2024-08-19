@@ -126,7 +126,6 @@ void light() {
 	vec2 star_coords = voronoi_noise_coord((coords2 + vec2(FRAGCOORD.z*0.25f, 0.0f))*16.0f, 1.0f);
 	float stars = sdStar5(star_coords*2.0f, 0.5f, 0.5f);
 	stars = 1.0f - squoosh(stars, 0.0f, 32.0f);
-
 	float light = dot(NORMAL, LIGHT);
 	float light_sign = sign(light);
 	light = abs(light);
@@ -136,21 +135,21 @@ void light() {
 	float new_light = light;
 
 	vec3 light_color = mix(
-		col_light.rgb*col.a,
 		light*ALBEDO*LIGHT_COLOR*col.rgb,
-		squoosh(dots-light, 0.66666f, 8.0f)
+		col_light.rgb,
+		(1.0f - squoosh(dots-light, 0.66666f, 8.0f))*col_light.a
 	);
 
 	light_color = mix(
 		light_color,
 		col_star.rgb*col.a,
-		stars
+		stars*col_star.a
 	);
 
 	vec3 dark_color = mix(
-		col_dark.rgb,
 		light*ALBEDO*LIGHT_COLOR*col.rgb,
-		squoosh(1.0f - ((1.0f - ATTENUATION) - line*0.75f), 0.5, 16.0)
+		col_dark.rgb,
+		(1.0 - squoosh(1.0f - ((1.0f - ATTENUATION) - line*0.75f), 0.5, 16.0))*col_dark.a
 	);
 
 #if 1
