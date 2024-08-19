@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://actors/obstacles/speed_bump.gd" id="1_vbpje"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vv81m"]
-height = 2.70241
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7yqm6"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_18ltc"]
 
@@ -14,10 +13,10 @@ script = ExtResource("1_vbpje")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_vv81m")
+shape = SubResource("CylinderShape3D_7yqm6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1.8, 0, -1, -7.86805e-08, 0, 0, 0, 1.6, 0, 0, 0)
 mesh = SubResource("CylinderMesh_18ltc")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

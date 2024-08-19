@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm8x3tqa6cc4q"]
+
+[ext_resource type="Script" path="res://actors/obstacles/death_doors.gd" id="1_iseg5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2p7w"]
+albedo_color = Color(1, 0.129412, 0.0823529, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5a6s7"]
+size = Vector3(18, 8, 0.25)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4hgub"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_juef8"]
+size = Vector3(18, 8, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybh4c"]
+size = Vector3(18, 8, 0.5)
+
+[node name="DeathDoors" type="Node3D"]
+script = ExtResource("1_iseg5")
+
+[node name="Part1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32051, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Part1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.3, 0)
+material_override = SubResource("StandardMaterial3D_w2p7w")
+mesh = SubResource("BoxMesh_5a6s7")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Part1/MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_4hgub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Part1/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_juef8")
+
+[node name="Area3D" type="Area3D" parent="Part1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Part1/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.3, 0)
+shape = SubResource("BoxShape3D_ybh4c")
+
+[node name="Part2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2773, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.3, 0)
+material_override = SubResource("StandardMaterial3D_w2p7w")
+mesh = SubResource("BoxMesh_5a6s7")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Part2/MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_4hgub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Part2/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_juef8")
+
+[node name="Area3D" type="Area3D" parent="Part2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Part2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.3, 0)
+shape = SubResource("BoxShape3D_ybh4c")
+
+[connection signal="body_entered" from="Part1/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Part2/Area3D" to="." method="_on_area_3d_body_entered"]
