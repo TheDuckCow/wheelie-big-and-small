@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://h2f0esfdcsp6"]
+
+[ext_resource type="PackedScene" uid="uid://bdw0t0d31cdkj" path="res://actors/cars/car05.glb" id="1_ta1tk"]
+[ext_resource type="Material" uid="uid://h1go4sooje1o" path="res://materials/car_trimsheet/car_shader.material" id="2_4kpiy"]
+[ext_resource type="Material" uid="uid://dc7ytoilodeeu" path="res://materials/car_trimsheet/tire_mat.material" id="3_2fqvp"]
+
+[node name="car05" instance=ExtResource("1_ta1tk")]
+
+[node name="car05" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_4kpiy")
+
+[node name="car05_l_b" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_2fqvp")
+
+[node name="car05_l_f" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_2fqvp")
+
+[node name="car05_r_b" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_2fqvp")
+
+[node name="car05_r_f" parent="." index="4" groups=["npc_cars", "obstacle"]]
+surface_material_override/0 = ExtResource("3_2fqvp")

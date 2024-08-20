@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name NpcCar
 
 @onready var speed := randf_range(5, 15)
 @export var base_mesh_path: NodePath
@@ -33,3 +34,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	velocity = -global_transform.basis.z * speed
 	move_and_slide()
+	
+	var cam = get_viewport().get_camera_3d()
+	if global_transform.origin.z > cam.global_transform.origin.z + 20:
+		queue_free()

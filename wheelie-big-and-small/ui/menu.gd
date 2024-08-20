@@ -3,7 +3,6 @@ extends Control
 
 @onready var start_btn  := %start_btn
 
-
 func _ready() -> void:
 	start_btn.grab_focus()
 

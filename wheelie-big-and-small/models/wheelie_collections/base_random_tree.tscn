@@ -1,0 +1,81 @@
+[gd_scene load_steps=23 format=3 uid="uid://ds55cfv1qbp1o"]
+
+[ext_resource type="PackedScene" uid="uid://b74bwxmlql81" path="res://models/wheelie_bits/arch.tscn" id="1_6wswr"]
+[ext_resource type="ArrayMesh" uid="uid://drj1xohca0vk4" path="res://models/wheelie_bits/tree_pine_bendy.tres" id="1_75j2r"]
+[ext_resource type="PackedScene" uid="uid://buaxxhpicm1yi" path="res://models/wheelie_collections/floor_multi_instance.tscn" id="1_task3"]
+[ext_resource type="PackedScene" uid="uid://blb61i2rojnuq" path="res://models/wheelie_bits/box_tall_pink_and_green.tscn" id="2_gdv0b"]
+[ext_resource type="PackedScene" uid="uid://3q48uulj2lmf" path="res://models/wheelie_bits/box_tall_yellow.tscn" id="3_a4p3o"]
+[ext_resource type="PackedScene" uid="uid://bok6vmdugbd41" path="res://models/wheelie_bits/cube_ball.tscn" id="4_gj8sg"]
+[ext_resource type="PackedScene" uid="uid://d02cvycb7hhdw" path="res://models/wheelie_bits/line_zig_zag.tscn" id="5_04nuc"]
+[ext_resource type="PackedScene" uid="uid://2simdt241l4j" path="res://models/wheelie_bits/sign_circle.tscn" id="6_nf2wb"]
+[ext_resource type="PackedScene" uid="uid://bidldowydklhr" path="res://models/wheelie_bits/sign_slash.tscn" id="7_bbb2e"]
+[ext_resource type="PackedScene" uid="uid://27tfincc4xg2" path="res://models/wheelie_bits/sign_triangle.tscn" id="8_mgvvu"]
+[ext_resource type="PackedScene" uid="uid://bbtf05pl7km1g" path="res://models/wheelie_bits/spiral_small.tscn" id="9_kxxvr"]
+[ext_resource type="PackedScene" uid="uid://bqcgea6d5l4sa" path="res://models/wheelie_bits/spiral_tall_tapered.tscn" id="10_xpa4m"]
+[ext_resource type="PackedScene" uid="uid://v73mqb87vmcw" path="res://models/wheelie_bits/torus.tscn" id="11_wh1k2"]
+[ext_resource type="PackedScene" uid="uid://oqueukmcaay8" path="res://models/wheelie_bits/traffic_cone.tscn" id="12_isqgw"]
+[ext_resource type="PackedScene" uid="uid://4bvtdtak0ouo" path="res://models/wheelie_bits/tree_pine_bendy.tscn" id="13_ce57o"]
+[ext_resource type="PackedScene" uid="uid://dg4ucbsytlsvs" path="res://models/wheelie_bits/tree_pine_jagged.tscn" id="14_2hlyp"]
+[ext_resource type="PackedScene" uid="uid://bt7outjtj38a" path="res://models/wheelie_bits/tree_pine_twist.tscn" id="15_pc0mf"]
+[ext_resource type="PackedScene" uid="uid://xo30l2ks78g2" path="res://models/wheelie_bits/tree_round_1.tscn" id="16_ftf4y"]
+[ext_resource type="PackedScene" uid="uid://cq3vvrey42j4r" path="res://models/wheelie_bits/tree_round_2.tscn" id="17_kx015"]
+[ext_resource type="PackedScene" uid="uid://ce5vvurb4h41v" path="res://models/wheelie_bits/tree_round_3.tscn" id="18_6a0ef"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_veat1"]
+size = Vector2(20, 50)
+
+[sub_resource type="MultiMesh" id="MultiMesh_spxhl"]
+transform_format = 1
+instance_count = 20
+mesh = ExtResource("1_75j2r")
+buffer = PackedFloat32Array(-0.624607, 0, 0.354965, -2.33548, 0, 0.718425, 0, 0, -0.354965, 0, -0.624607, 0.145554, -1.10833, 0, -0.0861698, 7.55505, 0, 1.11168, 0, 0, 0.0861698, 0, -1.10833, 19.0869, -0.0690862, 0, -1.21388, -1.84579, 0, 1.21584, 0, 0, 1.21388, 0, -0.0690862, -9.92812, -0.0027095, 0, 1.25203, -7.61149, 0, 1.25203, 0, 0, -1.25203, 0, -0.0027095, -5.84114, 0.0596119, 0, 1.1211, 2.42902, 0, 1.12269, 0, 0, -1.1211, 0, 0.0596119, -22.614, 1.10135, 0, -0.449147, 4.8956, 0, 1.18941, 0, 0, 0.449147, 0, 1.10135, 9.23387, 0.044954, 0, -1.29247, 5.04179, 0, 1.29325, 0, 0, 1.29247, 0, 0.044954, 17.0956, -0.815993, 0, -0.546323, 9.07954, 0, 0.981995, 0, 0, 0.546323, 0, -0.815993, -20.479, -0.818911, 0, -0.464288, 0.740838, 0, 0.941371, 0, 0, 0.464288, 0, -0.818911, 12.7653, -0.138044, 0, -1.00689, -8.34634, 0, 1.01631, 0, 0, 1.00689, 0, -0.138044, -11.0608, 0.823454, 0, -0.440329, 4.48332, 0, 0.933791, 0, 0, 0.440329, 0, 0.823454, 15.7866, -0.296198, 0, 1.1757, -5.89324, 0, 1.21244, 0, 0, -1.1757, 0, -0.296198, 6.64165, -1.02163, 0, 0.48971, -1.39934, 0, 1.13294, 0, 0, -0.48971, 0, -1.02163, -13.1254, -0.814542, 0, 0.0666741, 5.41552, 0, 0.817266, 0, 0, -0.0666741, 0, -0.814542, -23.3174, 0.913963, 0, -0.610405, 4.98127, 0, 1.09906, 0, 0, 0.610405, 0, 0.913963, -11.4298, -1.00217, 0, -0.386864, -1.25919, 0, 1.07425, 0, 0, 0.386864, 0, -1.00217, -3.37632, 1.28393, 0, -0.0183013, -1.51509, 0, 1.28406, 0, 0, 0.0183013, 0, 1.28393, 4.1819, -0.208668, 0, 0.998916, -3.76023, 0, 1.02048, 0, 0, -0.998916, 0, -0.208668, -10.9319, 0.119117, 0, -0.793413, -8.58614, 0, 0.802305, 0, 0, 0.793413, 0, 0.119117, 24.0183, -1.02736, 0, 0.352445, 5.9502, 0, 1.08614, 0, 0, -0.352445, 0, -1.02736, -22.1626)
+
+[node name="RandomTrees" type="Node3D"]
+
+[node name="src_mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_veat1")
+
+[node name="floor_multi_instance" parent="." instance=ExtResource("1_task3")]
+
+[node name="floor_multi_instance2" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_spxhl")
+
+[node name="ARCH" parent="." instance=ExtResource("1_6wswr")]
+
+[node name="BOX - TALL - PINK AND GREEN" parent="." instance=ExtResource("2_gdv0b")]
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null
+
+[node name="BOX-TALL-YELLOW" parent="." instance=ExtResource("3_a4p3o")]
+visible = false
+
+[node name="CUBE-BALL" parent="." instance=ExtResource("4_gj8sg")]
+
+[node name="LINE - ZIG-ZAG" parent="." instance=ExtResource("5_04nuc")]
+
+[node name="SIGN-CIRCLE" parent="." instance=ExtResource("6_nf2wb")]
+
+[node name="SIGN-SLASH" parent="." instance=ExtResource("7_bbb2e")]
+
+[node name="SIGN-TRIANGLE" parent="." instance=ExtResource("8_mgvvu")]
+
+[node name="SPIRAL - SMALL" parent="." instance=ExtResource("9_kxxvr")]
+
+[node name="SPIRAL - TALL TAPERED" parent="." instance=ExtResource("10_xpa4m")]
+
+[node name="TORUS" parent="." instance=ExtResource("11_wh1k2")]
+
+[node name="TRAFFIC-CONE" parent="." instance=ExtResource("12_isqgw")]
+
+[node name="TREE - PINE - BENDY" parent="." instance=ExtResource("13_ce57o")]
+
+[node name="TREE - PINE - JAGGED" parent="." instance=ExtResource("14_2hlyp")]
+
+[node name="TREE - PINE - TWIST" parent="." instance=ExtResource("15_pc0mf")]
+
+[node name="TREE - ROUND - 1" parent="." instance=ExtResource("16_ftf4y")]
+
+[node name="TREE - ROUND - 2" parent="." instance=ExtResource("17_kx015")]
+
+[node name="TREE - ROUND - 3" parent="." instance=ExtResource("18_6a0ef")]

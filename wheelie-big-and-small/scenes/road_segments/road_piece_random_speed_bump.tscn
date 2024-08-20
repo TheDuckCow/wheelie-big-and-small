@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://actors/obstacles/random_speed_bump.gd" id="4_in0ba"]
 [ext_resource type="PackedScene" uid="uid://c0uvck8pqvfku" path="res://actors/obstacles/speed_bump.tscn" id="4_mkigk"]
 
-[node name="RoadStraight" type="Node3D"]
+[node name="RoadRandomBumps" type="Node3D"]
 script = ExtResource("1_6onf3")
 material_resource = ExtResource("2_cskd0")
-use_lowpoly_preview = true
+generate_ai_lanes = true
 edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
 edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
 edge_rp_target_dirs = Array[int]([-1, -1])

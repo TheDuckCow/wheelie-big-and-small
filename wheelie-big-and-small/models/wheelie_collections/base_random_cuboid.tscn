@@ -1,4 +1,26 @@
-[gd_scene load_steps=5 format=4 uid="uid://bok6vmdugbd41"]
+[gd_scene load_steps=25 format=4 uid="uid://dxhlaqt47dy3a"]
+
+[ext_resource type="PackedScene" uid="uid://b74bwxmlql81" path="res://models/wheelie_bits/arch.tscn" id="1_mooc7"]
+[ext_resource type="PackedScene" uid="uid://blb61i2rojnuq" path="res://models/wheelie_bits/box_tall_pink_and_green.tscn" id="2_d2jro"]
+[ext_resource type="PackedScene" uid="uid://3q48uulj2lmf" path="res://models/wheelie_bits/box_tall_yellow.tscn" id="3_3ry4h"]
+[ext_resource type="PackedScene" uid="uid://bok6vmdugbd41" path="res://models/wheelie_bits/cube_ball.tscn" id="4_j8lto"]
+[ext_resource type="PackedScene" uid="uid://d02cvycb7hhdw" path="res://models/wheelie_bits/line_zig_zag.tscn" id="5_eccrd"]
+[ext_resource type="PackedScene" uid="uid://2simdt241l4j" path="res://models/wheelie_bits/sign_circle.tscn" id="6_lwxxg"]
+[ext_resource type="PackedScene" uid="uid://bidldowydklhr" path="res://models/wheelie_bits/sign_slash.tscn" id="7_xmnrt"]
+[ext_resource type="PackedScene" uid="uid://27tfincc4xg2" path="res://models/wheelie_bits/sign_triangle.tscn" id="8_bba51"]
+[ext_resource type="PackedScene" uid="uid://bbtf05pl7km1g" path="res://models/wheelie_bits/spiral_small.tscn" id="9_4blkr"]
+[ext_resource type="PackedScene" uid="uid://bqcgea6d5l4sa" path="res://models/wheelie_bits/spiral_tall_tapered.tscn" id="10_8pnr5"]
+[ext_resource type="PackedScene" uid="uid://v73mqb87vmcw" path="res://models/wheelie_bits/torus.tscn" id="11_1o8iv"]
+[ext_resource type="PackedScene" uid="uid://oqueukmcaay8" path="res://models/wheelie_bits/traffic_cone.tscn" id="12_mmpav"]
+[ext_resource type="PackedScene" uid="uid://4bvtdtak0ouo" path="res://models/wheelie_bits/tree_pine_bendy.tscn" id="13_5h150"]
+[ext_resource type="PackedScene" uid="uid://dg4ucbsytlsvs" path="res://models/wheelie_bits/tree_pine_jagged.tscn" id="14_wspuj"]
+[ext_resource type="PackedScene" uid="uid://bt7outjtj38a" path="res://models/wheelie_bits/tree_pine_twist.tscn" id="15_8hvib"]
+[ext_resource type="PackedScene" uid="uid://xo30l2ks78g2" path="res://models/wheelie_bits/tree_round_1.tscn" id="16_nbatn"]
+[ext_resource type="PackedScene" uid="uid://cq3vvrey42j4r" path="res://models/wheelie_bits/tree_round_2.tscn" id="17_34vl2"]
+[ext_resource type="PackedScene" uid="uid://ce5vvurb4h41v" path="res://models/wheelie_bits/tree_round_3.tscn" id="18_uqwkn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ax7vp"]
+size = Vector3(5, 10, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kce6b"]
 resource_name = "Turquoise"
@@ -72,7 +94,56 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a34xx")
 
-[node name="CUBE-BALL" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0.989563, -1.07523)
+[sub_resource type="MultiMesh" id="MultiMesh_dh57n"]
+transform_format = 1
+instance_count = 20
 mesh = SubResource("ArrayMesh_h4jc0")
-skeleton = NodePath("")
+buffer = PackedFloat32Array(-0.120028, 0.797514, 0.133215, 2.5, -0.663822, -0.0203033, -0.476561, 0.333085, -0.461645, -0.17816, 0.650634, -14.8548, 0.378266, -1.24266, -0.479761, -2.5, 1.30897, 0.439222, -0.105608, 4.49759, 0.246949, -0.424664, 1.29466, 10.6385, 0.531153, -0.967635, 0.0864773, -2.5, 0.95717, 0.538107, 0.142082, 2.96237, -0.166199, 0.00659843, 1.09465, -16.2403, 0.273164, -0.745765, 0.728497, -2.5, -0.105758, -0.769027, -0.747599, -1.63943, 1.03715, 0.118001, -0.268103, 15.8329, -1.04745, -0.600225, -0.637944, -2.03632, -0.85259, 0.926649, 0.528017, 5, 0.200832, 0.803394, -1.08564, 1.0714, 0.0741504, -0.770927, -1.09349, -2.5, 0.657863, 0.974641, -0.642526, 4.34698, 1.16502, -0.501294, 0.43242, 26.637, 0.247743, 0.369761, 0.56911, 2.5, 0.534205, 0.267441, -0.406309, -1.90972, -0.418611, 0.560124, -0.181694, -26.7746, 0.895584, 0.700994, -0.0532491, 2.5, -0.383161, 0.414411, -0.988812, 3.49084, -0.589419, 0.79572, 0.561883, -31.9121, -0.835842, 1.09725, 0.0635835, 2.5, -0.387089, -0.219119, -1.3072, -4.39305, -1.02867, -0.809111, 0.440236, -26.3112, -0.477056, -0.232221, -0.751411, -1.37138, -0.0634353, 0.887338, -0.233955, 5, 0.783914, -0.0695152, -0.476208, 35.7066, 0.516436, 0.167578, -0.752685, 1.92851, -0.50872, 0.754831, -0.180989, 5, 0.579501, 0.513294, 0.51189, -27.1448, -0.468434, 0.782155, -0.50273, 2.5, 0.887177, 0.207538, -0.503764, 0.0362003, -0.278244, -0.655054, -0.75988, 33.0223, 0.371453, 0.461451, 0.570926, 2.5, 0.340221, 0.458772, -0.592155, -4.4155, -0.650494, 0.50345, 0.0163081, -8.30684, -0.864138, -0.412365, 0.615144, -0.680668, 0.168944, 0.810618, 0.780729, 5, -0.721044, 0.684131, -0.554294, -7.33114, -0.511637, 0.353276, -0.159211, 2.5, 0.25639, 0.506361, 0.299645, 0.684947, 0.290545, 0.175268, -0.544783, 16.3748, -0.471408, -0.342176, -0.230786, -0.418539, 0.412234, -0.407534, -0.237806, -2.41007, -0.0202404, -0.330763, 0.53175, -37.5, 0.317021, -0.431824, 0.561157, -2.5, 0.700011, 0.283655, -0.177186, -2.6875, -0.10655, 0.578739, 0.505549, -30.1374, -0.397466, 0.35976, 0.282155, 2.5, 0.227588, 0.479938, -0.291343, 4.72481, -0.396537, -0.0851472, -0.450028, -11.4141, 0.987715, 0.3781, 0.679709, 1.60714, 0.641578, -1.01715, -0.366495, -5, 0.439706, 0.634808, -0.992079, -17.2832, -0.575102, -0.564467, -0.313049, -2.5, 0.499374, -0.654759, 0.263214, -1.30087, -0.40896, -0.00573016, 0.761632, -31.5397)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="src_mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ax7vp")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_dh57n")
+
+[node name="ARCH" parent="." instance=ExtResource("1_mooc7")]
+
+[node name="BOX - TALL - PINK AND GREEN" parent="." instance=ExtResource("2_d2jro")]
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null
+
+[node name="BOX-TALL-YELLOW" parent="." instance=ExtResource("3_3ry4h")]
+visible = false
+
+[node name="CUBE-BALL" parent="." instance=ExtResource("4_j8lto")]
+
+[node name="LINE - ZIG-ZAG" parent="." instance=ExtResource("5_eccrd")]
+
+[node name="SIGN-CIRCLE" parent="." instance=ExtResource("6_lwxxg")]
+
+[node name="SIGN-SLASH" parent="." instance=ExtResource("7_xmnrt")]
+
+[node name="SIGN-TRIANGLE" parent="." instance=ExtResource("8_bba51")]
+
+[node name="SPIRAL - SMALL" parent="." instance=ExtResource("9_4blkr")]
+
+[node name="SPIRAL - TALL TAPERED" parent="." instance=ExtResource("10_8pnr5")]
+
+[node name="TORUS" parent="." instance=ExtResource("11_1o8iv")]
+
+[node name="TRAFFIC-CONE" parent="." instance=ExtResource("12_mmpav")]
+
+[node name="TREE - PINE - BENDY" parent="." instance=ExtResource("13_5h150")]
+
+[node name="TREE - PINE - JAGGED" parent="." instance=ExtResource("14_wspuj")]
+
+[node name="TREE - PINE - TWIST" parent="." instance=ExtResource("15_8hvib")]
+
+[node name="TREE - ROUND - 1" parent="." instance=ExtResource("16_nbatn")]
+
+[node name="TREE - ROUND - 2" parent="." instance=ExtResource("17_34vl2")]
+
+[node name="TREE - ROUND - 3" parent="." instance=ExtResource("18_uqwkn")]

@@ -69,6 +69,5 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xukek")
 
 [node name="BOX-TALL-YELLOW" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5967, 0, 0)
 mesh = SubResource("ArrayMesh_05ht2")
 skeleton = NodePath("")

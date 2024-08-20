@@ -7,7 +7,11 @@ render_priority = 0
 shader = ExtResource("1_0kuax")
 shader_parameter/speed = null
 shader_parameter/angle = null
+shader_parameter/angle2 = null
 shader_parameter/col = Color(0.37487, 0.1197, 0.57, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n0o3"]
 resource_name = "Fuscia"
@@ -51,7 +55,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_avxo6")
 
 [node name="ARCH" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, -4.16511, 2.32845, 0)
+transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 2.25131, 0)
 material_override = SubResource("ShaderMaterial_0m62n")
 mesh = SubResource("ArrayMesh_paec4")
 skeleton = NodePath("")

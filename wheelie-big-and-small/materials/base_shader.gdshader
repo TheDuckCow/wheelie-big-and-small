@@ -145,7 +145,7 @@ void light() {
 	light = light*light_sign*0.5f + 0.5f;
 
 	float new_light = light;
-	
+
 	vec3 lit = light*ALBEDO*LIGHT_COLOR*col.rgb;
 
 	vec3 light_color = mix(

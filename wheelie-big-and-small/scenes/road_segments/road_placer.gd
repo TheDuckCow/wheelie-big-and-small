@@ -1,6 +1,7 @@
 extends "res://addons/road-generator/nodes/road_manager.gd"
 
-const BEHIND_BUFFER := 150.0
+const MAX_CAR_COUNT := 10
+const BEHIND_BUFFER := 200.0
 const FOREWARD_BUFFER := -100.0
 
 
@@ -12,9 +13,28 @@ const RoadScenes = [
 	"res://scenes/road_segments/road_piece_random_speed_bump.tscn",
 ]
 
+var Cars = [
+	load("res://actors/cars/car01.tscn"),
+	load("res://actors/cars/car02.tscn"),
+	load("res://actors/cars/car03.tscn"),
+	load("res://actors/cars/car04.tscn"),
+	load("res://actors/cars/car05.tscn"),
+]
+
+@onready var placer_parent = get_node("../enviros")
+
+const tree_placer := preload("res://models/wheelie_collections/floor_multi_instance.tscn")
+var Trees := [
+		load("res://models/wheelie_bits/tree_pine_bendy.tres"),
+		load("res://models/wheelie_bits/tree_pine_jagged.tres"),
+	]
+
+# other wheelie bits
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	update_containers()
+	place_enviros()
 
 
 func update_containers() -> void:
@@ -76,15 +96,15 @@ func update_containers() -> void:
 	if is_instance_valid(back_container) and back_z > zpos + BEHIND_BUFFER:
 		# Condition to remove container as it's too positive (forward = neg z dir)
 		# e.g. cam at -50 units with the LOWEST z RP at -25 (so everything is *higher*), do cull as buffer is 50
-		print("Delete: ", back_container, " at ", back_container.global_transform.origin, " with z", back_z, " vs ", zpos + BEHIND_BUFFER)
+		#print("Delete: ", back_container, " at ", back_container.global_transform.origin, " with z", back_z, " vs ", zpos + BEHIND_BUFFER)
 		back_container.queue_free()
 	if is_instance_valid(front_container) and front_z > zpos + FOREWARD_BUFFER:
-		print("Front most: ", front_container, " add cont here ", front_z, " with rp ", front_rp)
-		add_new_container(front_container, front_rp)
+		#print("Front most: ", front_container, " add cont here ", front_z, " with rp ", front_rp)
+		add_new_container(front_rp)
 
 
-func add_new_container(sibling: RoadContainer, target_add_rp: RoadPoint) -> void:
-	#sibling.validate_edges()
+func add_new_container(target_add_rp: RoadPoint) -> void:
+	print("Add new container for RP ", target_add_rp)
 	randomize()
 	var load_path:String = RoadScenes.pick_random()
 	var scn: PackedScene = load(load_path)
@@ -93,7 +113,6 @@ func add_new_container(sibling: RoadContainer, target_add_rp: RoadPoint) -> void
 	
 	# pick random edge RP
 	new_container.update_edges()
-	var first_node: RoadPoint
 	var maxz: float
 	var new_rp: RoadPoint
 	for _path in new_container.edge_rp_locals:
@@ -107,3 +126,64 @@ func add_new_container(sibling: RoadContainer, target_add_rp: RoadPoint) -> void
 
 	var offset:Vector3 = new_rp.global_transform.origin - target_add_rp.global_transform.origin
 	new_container.global_transform.origin -= offset
+	print("Now add cars..?")
+	var res = new_container.on_road_updated.connect(add_cars_to_lanes)
+	assert(res == OK)
+
+
+#func add_cars_to_lanes(container: RoadContainer) -> void:
+func add_cars_to_lanes(segments: Array) -> void:
+	#var segments = container.get_segments()
+	print("Segments:", segments)
+	for seg in segments:
+		var lanes:Array = seg.get_lanes()
+		if not lanes:
+			push_warning("No lanes found in container seg: %s of %s" % [seg, seg.container.name])
+			continue
+		lanes.shuffle()
+		var num_lanes:int = len(lanes)
+		var spawn_count = randi_range(0, num_lanes -1)
+		spawn_count = clamp(spawn_count, 0, 4)
+		#print("Spawning cars for %s/%s lanes" % [spawn_count, num_lanes])
+		for _idx in range(spawn_count):
+			var car_count := len(get_tree().get_nodes_in_group("npc_cars"))
+			if car_count >= MAX_CAR_COUNT:
+				return
+			var car_packed:PackedScene = Cars.pick_random()
+			var car_child:NpcCar = car_packed.instantiate()
+			
+			var lane:RoadLane = lanes[_idx] # get teh lane, then curve, the pstion from random index oncurv,e them to global.
+			var rand_offset:float = randf() * lane.curve.get_baked_length()
+			var placement:Vector3 = lane.curve.sample_baked(rand_offset)
+			
+			add_child(car_child)
+			car_child.global_transform.origin = lane.to_global(placement)
+			car_child.global_rotation.y = PI #-PI/2
+			#print("Added car %s at %" % [car_child, placement])
+
+
+func place_enviros() -> void:
+	var cam_posz: float = get_viewport().get_camera_3d().global_transform.origin.z
+	for ch in placer_parent.get_children():
+		if not ch.global_transform.origin.z > cam_posz + 25:
+			continue
+		ch.global_transform.origin.z -= 150
+		
+		# now randomize the multi mesh instances
+		var use_floor: bool = true # randf() > 0.5
+		var left: Node3D
+		var right: Node3D
+		var mesh: ArrayMesh
+		if use_floor:
+			left = ch.get_node("floor_L")
+			right = ch.get_node("floor_R")
+			#var packed_mesh = Trees.pick_random()
+			#var inst_mesh = Trees.pick_random() # packed_mesh.instantiate()
+			mesh = Trees.pick_random() # inst_mesh # Trees.pick_random()
+		else:
+			pass
+		
+		for _node in [left, right]:
+			var multi_obj:MultiMeshInstance3D = _node
+			multi_obj.multimesh.mesh = mesh
+			

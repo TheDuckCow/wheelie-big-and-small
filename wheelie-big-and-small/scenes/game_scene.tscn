@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://deeo68tbg3xv7" path="res://scenes/road_segments/road_piece_a.tscn" id="3_oy82i"]
 [ext_resource type="Script" path="res://scenes/road_segments/road_placer.gd" id="3_vo8t4"]
 [ext_resource type="PackedScene" uid="uid://gtq4rtkbl2cq" path="res://ui/hud.tscn" id="4_t4h14"]
+[ext_resource type="PackedScene" uid="uid://bd4xaor0utess" path="res://models/wheelie_collections/base_enviro_sides.tscn" id="5_r4vev"]
 [ext_resource type="Script" path="res://actors/smooth_follow.gd" id="9_d2vaw"]
 [ext_resource type="Script" path="res://actors/camera_fov.gd" id="10_yq1xe"]
-[ext_resource type="PackedScene" uid="uid://cwkm7mqhwe4ob" path="res://actors/cars/car01.tscn" id="12_804bc"]
 
 [sub_resource type="Environment" id="Environment_20ldg"]
 background_mode = 1
@@ -19,9 +19,19 @@ script = ExtResource("1_dmcgd")
 [node name="PlayerCar" parent="." instance=ExtResource("1_dwy4g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90454, 10.8992)
 
+[node name="enviros" type="Node3D" parent="."]
+
+[node name="base_enviro_sides" parent="enviros" instance=ExtResource("5_r4vev")]
+
+[node name="base_enviro_sides2" parent="enviros" instance=ExtResource("5_r4vev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+
+[node name="base_enviro_sides3" parent="enviros" instance=ExtResource("5_r4vev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+
 [node name="RoadManager" type="Node3D" parent="."]
 script = ExtResource("3_vo8t4")
-density = 5.0
+density = 8.0
 auto_refresh = false
 
 [node name="RoadStraight" parent="RoadManager" instance=ExtResource("3_oy82i")]
@@ -46,20 +56,5 @@ offset = Vector3(0, 0, 1)
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 script = ExtResource("10_yq1xe")
-
-[node name="car01" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 2.18451, 1.06587, -7.07004)
-
-[node name="car02" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.73642, 1.06587, -14.8143)
-
-[node name="car03" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.29945, 1.06587, -23.7219)
-
-[node name="car04" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.57852, 1.06587, -34.0143)
-
-[node name="car05" parent="." instance=ExtResource("12_804bc")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.82064, 1.06587, -41.6825)
 
 [editable path="PlayerCar"]

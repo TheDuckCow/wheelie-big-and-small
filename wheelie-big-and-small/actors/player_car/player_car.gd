@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	var xfac: float = get_target_size() * LANE_CHANGE_SPEED
+	#var xfac: float = get_target_size() * LANE_CHANGE_SPEED
 	
 	if direction:
 		velocity.x = lerp(velocity.x, direction.x * LANE_CHANGE_SPEED, delta)
@@ -103,6 +103,7 @@ func set_size(delta: float) -> void:
 	target_scale = get_target_size()
 	var new_scale = lerp(current_scale, target_scale, SCALE_SMOOTHING * delta)
 	player_car.scale = Vector3(new_scale, new_scale, new_scale)
+
 
 func set_speed(input: float) -> void:
 	velocity.z = -abs(input)

@@ -104,24 +104,35 @@ render_priority = 0
 shader = ExtResource("1_nhxhe")
 shader_parameter/speed = null
 shader_parameter/angle = null
+shader_parameter/angle2 = null
 shader_parameter/col = Color(0, 0, 0, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2pve"]
 render_priority = 0
 shader = ExtResource("1_nhxhe")
 shader_parameter/speed = null
 shader_parameter/angle = null
+shader_parameter/angle2 = null
 shader_parameter/col = Color(0.528354, 0.178272, 0.599016, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8uba7"]
 render_priority = 0
 shader = ExtResource("1_nhxhe")
 shader_parameter/speed = null
 shader_parameter/angle = null
+shader_parameter/angle2 = null
 shader_parameter/col = Color(0.267873, 0.501053, 0.228123, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 1)
 
 [node name="BOX - TALL - PINK AND GREEN" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7888, 0, 0)
 mesh = SubResource("ArrayMesh_l1ihr")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_8j3b5")

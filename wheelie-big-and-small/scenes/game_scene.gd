@@ -1,13 +1,17 @@
 extends Node3D
 
+
 @onready var road_manager: RoadManager= get_node("RoadManager")
 
 @onready var time_start_msec := Time.get_ticks_msec()
 var ran_once := false
 var ended := false
+var road_mat:Material = preload("res://materials/road_mat_memphis.material")
+
 
 func _ready() -> void:
 	Signals.run_ended.connect(_run_ended)
+	road_mat.set_shader_parameter("col_star", Color(0, 0, 0, 0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,6 +40,11 @@ func _run_ended(source_node: Node) -> void:
 	if ended:
 		print("Was already ended...")
 		return
+	
+	# For some pizzaz, show the stars in the shader
+	# (tried animating it, but that did not go well [major stutter]
+	road_mat.set_shader_parameter("col_star", Color("ff4df3"))
+	
 	get_tree().paused = true
 	Data.current_score_msec = run_time_msec()
 	ended = true # must assign this AFTER assigning the score above

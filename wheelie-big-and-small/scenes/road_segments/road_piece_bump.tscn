@@ -7,7 +7,7 @@
 [node name="RoadBump" type="Node3D"]
 script = ExtResource("1_ns070")
 material_resource = ExtResource("2_inesw")
-use_lowpoly_preview = true
+generate_ai_lanes = true
 edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
 edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
 edge_rp_target_dirs = Array[int]([-1, -1])
