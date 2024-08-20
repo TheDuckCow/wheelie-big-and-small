@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhaipku8uxluk"]
+[gd_scene load_steps=3 format=3 uid="uid://v6ym7a7wen8r"]
+
+[ext_resource type="PackedScene" uid="uid://yy4ye6xrco2r" path="res://models/checkpoint.tscn" id="1_ki04r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s3kck"]
 
@@ -6,4 +8,8 @@
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(16.2236, 0, 0, 0, 14.1546, 0, 0, 0, 0.19205, 0, 6.73236, 0)
+visible = false
 mesh = SubResource("BoxMesh_s3kck")
+
+[node name="Checkpoint" parent="." instance=ExtResource("1_ki04r")]
+transform = Transform3D(3.35274, 0, 0, 0, 3.35274, 0, 0, 0, 3.35274, 0, 1.5191, 0)

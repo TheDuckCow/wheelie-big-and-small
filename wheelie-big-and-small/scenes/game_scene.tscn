@@ -51,6 +51,7 @@ shadow_enabled = true
 environment = SubResource("Environment_20ldg")
 
 [node name="HUD" parent="." instance=ExtResource("4_t4h14")]
+target = NodePath("../MrWheelie2")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." node_paths=PackedStringArray("target")]
 spring_length = 3.0

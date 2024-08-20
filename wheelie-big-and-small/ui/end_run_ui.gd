@@ -11,7 +11,7 @@ func _ready() -> void:
 	if Data.current_score_msec == 0.0:
 		score_label.text = "(no score)"
 	else:
-		score_label.text = Data.format_time_msec(Data.current_score_msec)
+		score_label.text = "Score: %.1f m" % Data.run_distance_m
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -46,5 +46,4 @@ func _on_retry_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	get_tree().paused = false
-	print("Did press happen?")
 	SceneTransition.to_scene("res://ui/menu.tscn")

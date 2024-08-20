@@ -8,10 +8,13 @@ var ran_once := false
 var ended := false
 var road_mat:Material = preload("res://materials/road_mat_memphis.material")
 
+var z_start_offset: float
+
 
 func _ready() -> void:
 	Signals.run_ended.connect(_run_ended)
 	road_mat.set_shader_parameter("col_star", Color(0, 0, 0, 0))
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

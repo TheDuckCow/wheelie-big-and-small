@@ -4,7 +4,7 @@ extends Control
 
 @onready var _target = get_node(target)
 @onready var speedo_label := %speedo
-@onready var timer_label := %timer
+@onready var distance_label := %distance
 @onready var debug_label := %debug
 @onready var checkpoint_timer_label = %checkpoint_timer
 
@@ -28,8 +28,8 @@ func _process(_delta: float) -> void:
 	var display_speed = abs(round(_target.get_speed()))
 	speedo_label.text = "Speed: %s" % display_speed
 	
-	var elapsed:float = get_parent().run_time_msec()
-	timer_label.text = Data.format_time_msec(elapsed)
+	#var elapsed:float = get_parent().run_time_msec()
+	distance_label.text = "Distance: %.1f m" % Data.run_distance_m # format_time_msec(elapsed)
 	
 	checkpoint_timer_label.text = "Time left: %0.2f" % Data.checkpoint_timer_s
 

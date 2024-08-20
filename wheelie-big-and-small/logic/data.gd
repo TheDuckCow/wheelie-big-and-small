@@ -6,6 +6,13 @@ extends Node
 var current_score_msec: float = 0.0
 var high_score_msec: float = 0.0
 var checkpoint_timer_s: float = 0.0 
+var run_distance_m: float = 0.0
+
+var high_score_m: float = 0.0
 
 func format_time_msec(msec: float) -> String:
 	return "%.2f s" % (msec / 1000.0)
+
+func update_high_score() -> void:
+	if run_distance_m > high_score_m:
+		high_score_m = run_distance_m

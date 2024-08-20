@@ -25,13 +25,18 @@ var target_scale: float = 1.0
 @onready var player_car = $"."
 @onready var animation_player := $AnimationPlayer
 
+@onready var init_offset: float = global_transform.origin.z
+
 
 func _ready() -> void:
 	var res = Signals.run_ended.connect(on_run_ended)
 	assert(res == OK)
+	
 
 
 func _physics_process(delta: float) -> void:
+	# update progress:
+	Data.run_distance_m = abs(global_transform.origin.z - init_offset)
 	
 	if global_transform.origin.y < 0 and state == State.RUNNING:
 		Signals.run_ended.emit(self)
@@ -120,3 +125,6 @@ func set_speed(input: float) -> void:
 func on_run_ended(obstacle) -> void:
 	state = State.ENDED
 	animation_player.play("ended")
+	
+	Data.run_distance_m = abs(global_transform.origin.z - init_offset)
+	Data.update_high_score()
