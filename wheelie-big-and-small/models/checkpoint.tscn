@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://yy4ye6xrco2r"]
+
+[ext_resource type="PackedScene" uid="uid://cv1f1rxqe68lv" path="res://models/checkpoint.glb" id="1_wu7fh"]
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="2_fgrl2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xr7wa"]
+render_priority = 0
+shader = ExtResource("2_fgrl2")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.0430392, 0.0430392, 0.0430391, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(0, 0, 0, 1)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6na3"]
+render_priority = 0
+shader = ExtResource("2_fgrl2")
+shader_parameter/speed = null
+shader_parameter/angle = 0.0
+shader_parameter/angle2 = 0.0
+shader_parameter/col = Color(0.115377, 0.265815, 0.0895706, 1)
+shader_parameter/col_dark = Color(0.0383487, 0.231488, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(0.5092, 0.67, 0.53868, 0)
+
+[node name="Checkpoint" instance=ExtResource("1_wu7fh")]
+
+[node name="poles" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_xr7wa")
+
+[node name="flag" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_r6na3")

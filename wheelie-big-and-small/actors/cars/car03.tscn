@@ -1,8 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://dln8ffy6i4wku"]
+[gd_scene load_steps=9 format=3 uid="uid://dln8ffy6i4wku"]
 
 [ext_resource type="PackedScene" uid="uid://cj2ncb8id3vxk" path="res://actors/cars/car03.glb" id="1_sbr17"]
-[ext_resource type="Material" uid="uid://h1go4sooje1o" path="res://materials/car_trimsheet/car_shader.material" id="2_k7x3x"]
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="2_ce4rj"]
 [ext_resource type="Material" uid="uid://dc7ytoilodeeu" path="res://materials/car_trimsheet/tire_mat.material" id="3_c2aco"]
+[ext_resource type="Texture2D" uid="uid://c704iyqjwj2bo" path="res://materials/car_trimsheet/car_albedo.png" id="3_i05lr"]
+[ext_resource type="Texture2D" uid="uid://bbjikvupdotnf" path="res://materials/new_noise_texture_2d.tres" id="4_7gf0n"]
+[ext_resource type="Texture2D" uid="uid://bckg8my4yoy1l" path="res://materials/car_trimsheet/car_normal.png" id="5_c7w2m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6g2iu"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_ce4rj")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.99, 0.3663, 0.099, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 1)
+shader_parameter/color_texture = ExtResource("3_i05lr")
+shader_parameter/normal_map_texture = ExtResource("5_c7w2m")
+shader_parameter/noise_texture = ExtResource("4_7gf0n")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kvr0"]
 size = Vector3(1.4082, 1.96438, 3.77395)
@@ -10,7 +28,7 @@ size = Vector3(1.4082, 1.96438, 3.77395)
 [node name="car03" groups=["npc_cars", "obstacle"] instance=ExtResource("1_sbr17")]
 
 [node name="car03" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_k7x3x")
+surface_material_override/0 = SubResource("ShaderMaterial_6g2iu")
 
 [node name="car03_l_f" parent="." index="1"]
 surface_material_override/0 = ExtResource("3_c2aco")

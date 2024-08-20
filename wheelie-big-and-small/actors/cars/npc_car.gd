@@ -11,6 +11,9 @@ func _ready() -> void:
 
 
 func randomize_car_mat():
+	# Cancelling, this caused severe stuttering due to
+	# modifying shaders in realtime
+	return
 	var car_mesh:MeshInstance3D = get_node_or_null(base_mesh_path)
 	if not is_instance_valid(car_mesh):
 		push_warning("Car mesh was invalid for %s" % self)
