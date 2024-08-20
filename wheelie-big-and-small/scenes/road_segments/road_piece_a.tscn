@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://deeo68tbg3xv7"]
+[gd_scene load_steps=5 format=3 uid="uid://deeo68tbg3xv7"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_1ewx6"]
 [ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_0g42l"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_3k3s3"]
+[ext_resource type="PackedScene" uid="uid://dtdkh5wijduyy" path="res://actors/characters/mr_donut.tscn" id="4_n6k3k"]
 
 [node name="RoadStraight" type="Node3D"]
 script = ExtResource("1_1ewx6")
@@ -32,3 +33,6 @@ gutter_profile = Vector2(2, -0.1)
 next_pt_init = NodePath("../RP_001")
 prior_mag = 16.0
 next_mag = 16.0
+
+[node name="MrDonut" parent="." instance=ExtResource("4_n6k3k")]
+transform = Transform3D(0.0938129, 0, -0.99559, 0, 1, 0, 0.99559, 0, 0.0938129, -1.23939, 1, 17.3178)

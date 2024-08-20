@@ -54,14 +54,14 @@ void fragment() {
 	}
 
 	COORDS0 = (FRAGCOORD.xy-VIEWPORT_SIZE.xy*0.5f)/VIEWPORT_SIZE.x;
-	
+
 	if (angle == 0.0f) {
 		COORDS0 = rotate(0.692615f)*COORDS0;
 	}
 	else {
 		COORDS0 = rotate(radians(angle))*COORDS0;
 	}
-	
+
 	if (angle2 == 0.0f) {
 		COORDS1 = rotate(1.38523f)*COORDS0;
 	}
@@ -89,7 +89,7 @@ void light() {
 	light = light*light_sign*0.5f + 0.5f;
 
 	float new_light = light;
-	
+
 	vec3 lit = light*ALBEDO*LIGHT_COLOR*col.rgb;
 
 	vec3 light_color = mix(
