@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://cif8dm16hvfoe"]
+
+[ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_dmcgd"]
+[ext_resource type="PackedScene" uid="uid://d4dfrt1dtg37l" path="res://actors/player_car/player_car.tscn" id="1_dwy4g"]
+[ext_resource type="PackedScene" uid="uid://deeo68tbg3xv7" path="res://scenes/road_segments/road_piece_a.tscn" id="3_oy82i"]
+[ext_resource type="Script" path="res://scenes/road_segments/road_placer.gd" id="3_vo8t4"]
+[ext_resource type="PackedScene" uid="uid://gtq4rtkbl2cq" path="res://ui/hud.tscn" id="4_t4h14"]
+[ext_resource type="PackedScene" uid="uid://bd4xaor0utess" path="res://models/wheelie_collections/base_enviro_sides.tscn" id="5_r4vev"]
+[ext_resource type="Script" path="res://actors/smooth_follow.gd" id="9_d2vaw"]
+[ext_resource type="Script" path="res://actors/camera_fov.gd" id="10_yq1xe"]
+
+[sub_resource type="Environment" id="Environment_20ldg"]
+background_mode = 1
+background_color = Color(0.929715, 0.929715, 0.929715, 1)
+
+[node name="GameScene" type="Node3D"]
+script = ExtResource("1_dmcgd")
+
+[node name="PlayerCar" parent="." instance=ExtResource("1_dwy4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90454, 10.8992)
+
+[node name="enviros" type="Node3D" parent="."]
+
+[node name="base_enviro_sides" parent="enviros" instance=ExtResource("5_r4vev")]
+
+[node name="base_enviro_sides2" parent="enviros" instance=ExtResource("5_r4vev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+
+[node name="base_enviro_sides3" parent="enviros" instance=ExtResource("5_r4vev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+
+[node name="RoadPlacer" type="Node3D" parent="."]
+script = ExtResource("3_vo8t4")
+density = 8.0
+auto_refresh = false
+
+[node name="RoadStraight" parent="RoadPlacer" instance=ExtResource("3_oy82i")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.565341, 0.685499, -0.458781, -1.48769e-08, 0.556194, 0.831052, 0.824858, 0.469828, -0.31444, 0, 4.06826, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_20ldg")
+
+[node name="HUD" parent="." instance=ExtResource("4_t4h14")]
+target = NodePath("../PlayerCar")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." node_paths=PackedStringArray("target")]
+spring_length = 3.0
+margin = 0.5
+script = ExtResource("9_d2vaw")
+target = NodePath("../PlayerCar/Pivot")
+offset = Vector3(0, 0, 1)
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+script = ExtResource("10_yq1xe")
+
+[editable path="PlayerCar"]

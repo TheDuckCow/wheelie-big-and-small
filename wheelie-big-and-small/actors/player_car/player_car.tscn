@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://actors/player_car/player_car.gd" id="1_ocetw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c27qk"]
-size = Vector3(1, 1, 1.5)
+size = Vector3(1, 1, 0.980469)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4r3b"]
 albedo_color = Color(0, 0.827451, 0.556863, 1)
@@ -15,7 +15,7 @@ size = Vector3(1, 1, 0.75)
 script = ExtResource("1_ocetw")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.750488, -1.09065e-08)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.490722, -2.22612e-08)
 shape = SubResource("BoxShape3D_c27qk")
 
 [node name="Mesh" type="Node3D" parent="."]
