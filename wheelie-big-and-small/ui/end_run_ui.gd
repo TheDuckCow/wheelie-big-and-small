@@ -4,7 +4,7 @@ signal on_restart_game
 
 @onready var score_label := %score_label
 @onready var default_focus_btn := %retry
-
+@onready var new_record_label := %record
 
 
 func _ready() -> void:
@@ -12,6 +12,11 @@ func _ready() -> void:
 		score_label.text = "(no score)"
 	else:
 		score_label.text = "Score: %.1f m" % Data.run_distance_m
+	
+	if Data.was_new_record:
+		new_record_label.show()
+	else:
+		new_record_label.hide()
 
 
 func _unhandled_input(_event: InputEvent) -> void:

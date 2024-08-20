@@ -8,7 +8,7 @@ extends Control
 @onready var debug_label := %debug
 @onready var checkpoint_timer_label = %checkpoint_timer
 
-var debug := true
+var debug := false
 
 func _ready() -> void:
 	if not is_instance_valid(_target):

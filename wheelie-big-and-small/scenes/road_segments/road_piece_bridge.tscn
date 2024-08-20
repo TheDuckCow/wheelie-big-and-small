@@ -1,13 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmp7s4kdopcyr"]
+[gd_scene load_steps=10 format=3 uid="uid://cmp7s4kdopcyr"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_6leno"]
 [ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_elos8"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_ijm2s"]
 [ext_resource type="PackedScene" uid="uid://cnef1hn5llg6o" path="res://scenes/road_segments/bridge_1_src.tscn" id="3_tsorb"]
 [ext_resource type="PackedScene" uid="uid://2simdt241l4j" path="res://models/wheelie_bits/sign_circle.tscn" id="5_boj18"]
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="6_m4q0d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6ytw"]
 size = Vector3(27.8337, 1.53256, 16.1456)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_15su3"]
+top_radius = 10.0
+bottom_radius = 10.0
+height = 27.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o80px"]
+render_priority = 0
+shader = ExtResource("6_m4q0d")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(1, 0.117724, 0.954207, 0.407843)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 0.372549)
+shader_parameter/col_star = Color(1, 0, 1, 0)
 
 [node name="RoadStraight" type="Node3D"]
 script = ExtResource("1_6leno")
@@ -54,3 +71,8 @@ transform = Transform3D(1, 0, 0, 0, 0.983306, -0.181961, 0, 0.181961, 0.983306, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.997826, 0.0659082, 0, -0.0659082, 0.997826, 0.11438, 0.983512, 1.25525)
 shape = SubResource("BoxShape3D_b6ytw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, -8.95662, -27.7934)
+mesh = SubResource("CylinderMesh_15su3")
+surface_material_override/0 = SubResource("ShaderMaterial_o80px")

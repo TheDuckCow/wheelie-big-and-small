@@ -62,7 +62,7 @@ prior_mag = 16.0
 next_mag = 16.0
 
 [node name="overpass_root" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.93391, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0233536, -4.03268, 0.096489)
 
 [node name="overpass" type="MeshInstance3D" parent="overpass_root"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.53472, 0)
