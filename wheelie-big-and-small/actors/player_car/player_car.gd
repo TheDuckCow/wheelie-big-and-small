@@ -23,6 +23,12 @@ var state:int = State.RUNNING
 var target_scale: float = 1.0
 
 @onready var player_car = $"."
+@onready var animation_player := $AnimationPlayer
+
+
+func _ready() -> void:
+	var res = Signals.run_ended.connect(on_run_ended)
+	assert(res == OK)
 
 
 func _physics_process(delta: float) -> void:
@@ -99,6 +105,8 @@ func get_target_size() -> float:
 
 
 func set_size(delta: float) -> void:
+	if state == State.ENDED:
+		return
 	var current_scale = player_car.scale.x
 	target_scale = get_target_size()
 	var new_scale = lerp(current_scale, target_scale, SCALE_SMOOTHING * delta)
@@ -107,3 +115,8 @@ func set_size(delta: float) -> void:
 
 func set_speed(input: float) -> void:
 	velocity.z = -abs(input)
+
+
+func on_run_ended(obstacle) -> void:
+	state = State.ENDED
+	animation_player.play("ended")
