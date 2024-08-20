@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cif8dm16hvfoe"]
+[gd_scene load_steps=11 format=3 uid="uid://cif8dm16hvfoe"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_dmcgd"]
 [ext_resource type="PackedScene" uid="uid://d4dfrt1dtg37l" path="res://actors/player_car/player_car.tscn" id="1_dwy4g"]
+[ext_resource type="PackedScene" uid="uid://cn42dlyrwg01s" path="res://actors/characters/mr_wheelie.tscn" id="3_cex78"]
 [ext_resource type="PackedScene" uid="uid://deeo68tbg3xv7" path="res://scenes/road_segments/road_piece_a.tscn" id="3_oy82i"]
 [ext_resource type="Script" path="res://scenes/road_segments/road_placer.gd" id="3_vo8t4"]
 [ext_resource type="PackedScene" uid="uid://gtq4rtkbl2cq" path="res://ui/hud.tscn" id="4_t4h14"]
@@ -15,6 +16,9 @@ background_color = Color(0.929715, 0.929715, 0.929715, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_dmcgd")
+
+[node name="MrWheelie2" parent="." instance=ExtResource("3_cex78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90454, 10.8992)
 
 [node name="PlayerCar" parent="." instance=ExtResource("1_dwy4g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90454, 10.8992)
