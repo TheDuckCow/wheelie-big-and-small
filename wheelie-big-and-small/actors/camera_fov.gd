@@ -1,9 +1,9 @@
 extends Camera3D
 
 @export var player: Node3D
-@export var min_fov: float = 70.0
-@export var max_fov: float = 90.0
-@export var max_speed: float = 120.0
+@export var min_fov: float = 75.0
+@export var max_fov: float = 120.0
+@export var max_speed: float = 40.0
 
 func _process(_delta):
 	if player:
