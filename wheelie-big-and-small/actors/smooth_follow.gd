@@ -1,6 +1,6 @@
 extends SpringArm3D
 
-@export var lerp_speed = 12.0
+@export var lerp_speed = 55.0
 @export var target: Node3D
 @export var offset = Vector3.ZERO
 

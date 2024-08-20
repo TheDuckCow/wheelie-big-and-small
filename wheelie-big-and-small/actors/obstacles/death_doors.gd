@@ -4,7 +4,7 @@ func _ready():
 	randomize_position()
 
 func randomize_position():
-	var random_x = randi_range(-8, 8)
+	var random_x = randi_range(-7, 7)
 	self.position.x = random_x
 
 func process_obstacle() -> void:

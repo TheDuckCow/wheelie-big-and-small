@@ -1,17 +1,17 @@
 extends CharacterBody3D
 class_name PlayerCar
 
-const LANE_CHANGE_SPEED = 30.0
-const ACCELERATION := 14.0
-const BRAKE := 8.0
+const LANE_CHANGE_SPEED = 20.0
+const ACCELERATION := 15.0
+const BRAKE := 5.0
 const COAST_FAC := 0.5
-const MAX_SPEED := 50.0 
+const MAX_SPEED := 40.0 
 const MIN_SPEED := 10.0
 
 # Used throughout game to reference the "rest" position in 3d editor,
 # since the car will be made both larger and smaller
 const REST_SPEED := 10.0
-const SCALE_SMOOTHING := 3.0 # smoothness of the scaling
+const SCALE_SMOOTHING := 7.5 # smoothness of the scaling
 
 
 enum State {
@@ -45,11 +45,12 @@ func _physics_process(delta: float) -> void:
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	var xfac: float = get_target_size() * LANE_CHANGE_SPEED
+	
 	if direction:
-		velocity.x = lerp(velocity.x, direction.x * xfac, delta)
+		velocity.x = lerp(velocity.x, direction.x * LANE_CHANGE_SPEED, delta)
 		velocity.z += direction.z * ACCELERATION * delta
 	else:
-		velocity.x = move_toward(velocity.x, 0, xfac * 1.5 * delta)
+		velocity.x = move_toward(velocity.x, 0, LANE_CHANGE_SPEED * 1.5 * delta)
 		velocity.z = move_toward(velocity.z, 0, COAST_FAC * delta)
 	
 	# Prevent going backwards
@@ -71,9 +72,31 @@ func get_speed() -> float:
 
 func get_target_size() -> float:
 	var fwd_speed: float = get_speed()
-	var normalized_speed = clamp((fwd_speed - 10) / (MAX_SPEED - 10), 0.01, 1.0)
-	var scale_factor = log(1.0 + normalized_speed * 24.0)
-	return scale_factor
+	
+	# Speed thresholds
+	var speed_threshold_1: float = 15.0
+	var speed_threshold_2: float = 20.0
+	var speed_threshold_3: float = 30.0
+	
+	# Cases for specific speed ranges
+	if fwd_speed <= speed_threshold_1:
+		return 0.075  # Keep the scale small
+	
+	if fwd_speed <= speed_threshold_2:
+		# Linear interpolation between the small size and a slightly larger size
+		return lerp(0.075, 0.15, (fwd_speed - speed_threshold_1) / (speed_threshold_2 - speed_threshold_1))
+	
+	if fwd_speed <= speed_threshold_3:
+		# Logarithmic scaling for mid-range speeds but not to the max size
+		var normalized_speed_mid = clamp((fwd_speed - speed_threshold_2) / (speed_threshold_3 - speed_threshold_2), 0.0, 1.0)
+		var log_scale_mid = log(1.0 + 4.0 * normalized_speed_mid) / log(5.0)  # Smaller logarithmic growth
+		return lerp(0.15, 1.0, log_scale_mid)
+	
+	# Logarithmic scaling for the higher speeds to the max size
+	var normalized_speed_high = clamp((fwd_speed - speed_threshold_3) / (MAX_SPEED - speed_threshold_3), 0.0, 1.0)
+	var log_scale_high = log(1.0 + 9.0 * normalized_speed_high) / log(10.0)  # Base 10 logarithm scaling
+	return lerp(1.0, 2.5, log_scale_high)
+
 
 func set_size(delta: float) -> void:
 	var current_scale = player_car.scale.x

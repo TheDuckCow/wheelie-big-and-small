@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdfkpw8hradom"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_qfxpi"]
-[ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_2c6mt"]
+[ext_resource type="Material" path="res://materials/road_mat_memphis.material" id="2_2c6mt"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_lt5n2"]
 [ext_resource type="PackedScene" uid="uid://dm8x3tqa6cc4q" path="res://actors/obstacles/death_doors.tscn" id="4_1lbva"]
 
@@ -32,4 +32,4 @@ prior_mag = 16.0
 next_mag = 16.0
 
 [node name="DeathDoors" parent="." instance=ExtResource("4_1lbva")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0876253, 2.5713, -9.75073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0876253, 4.69758, -9.75073)
