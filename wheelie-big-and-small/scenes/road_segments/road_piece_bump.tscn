@@ -7,6 +7,7 @@
 [node name="RoadBump" type="Node3D"]
 script = ExtResource("1_ns070")
 material_resource = ExtResource("2_inesw")
+use_lowpoly_preview = true
 generate_ai_lanes = true
 edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
 edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
@@ -19,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 35.9904)
 script = ExtResource("3_l00qa")
 traffic_dir = [1, 1, 1, 1]
 lanes = [0, 3, 3, 2]
+gutter_profile = Vector2(2, -0.1)
 prior_pt_init = NodePath("../RP_002")
 prior_mag = 18.0775
 
@@ -27,6 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.42707, -9.05145)
 script = ExtResource("3_l00qa")
 traffic_dir = [1, 1, 1, 1]
 lanes = [0, 3, 3, 2]
+gutter_profile = Vector2(2, -0.1)
 prior_pt_init = NodePath("../RP_003")
 next_pt_init = NodePath("../RP_001")
 prior_mag = 16.0
@@ -37,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -78.4783)
 script = ExtResource("3_l00qa")
 traffic_dir = [1, 1, 1, 1]
 lanes = [0, 3, 3, 2]
+gutter_profile = Vector2(2, -0.1)
 next_pt_init = NodePath("../RP_002")
 prior_mag = 16.0
 next_mag = 34.3483

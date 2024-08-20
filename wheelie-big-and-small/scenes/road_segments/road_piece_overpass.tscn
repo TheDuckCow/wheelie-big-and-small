@@ -47,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 17.4108)
 script = ExtResource("3_2q6hj")
 traffic_dir = [1, 1, 1, 1]
 lanes = [0, 3, 3, 2]
+gutter_profile = Vector2(2, -0.1)
 prior_pt_init = NodePath("../RP_002")
 
 [node name="RP_002" type="Node3D" parent="."]
@@ -54,6 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15.6253)
 script = ExtResource("3_2q6hj")
 traffic_dir = [1, 1, 1, 1]
 lanes = [0, 3, 3, 2]
+gutter_profile = Vector2(2, -0.1)
 next_pt_init = NodePath("../RP_001")
 prior_mag = 16.0
 next_mag = 16.0

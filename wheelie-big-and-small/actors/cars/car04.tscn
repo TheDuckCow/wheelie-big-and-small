@@ -1,8 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://742r3qy2hhp5"]
+[gd_scene load_steps=9 format=3 uid="uid://742r3qy2hhp5"]
 
 [ext_resource type="PackedScene" uid="uid://q8j7sq6u1jq4" path="res://actors/cars/car04.glb" id="1_k5wc8"]
-[ext_resource type="Material" uid="uid://h1go4sooje1o" path="res://materials/car_trimsheet/car_shader.material" id="2_2lv7v"]
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="2_ytjrq"]
+[ext_resource type="Texture2D" uid="uid://c704iyqjwj2bo" path="res://materials/car_trimsheet/car_albedo.png" id="3_64v70"]
 [ext_resource type="Material" uid="uid://dc7ytoilodeeu" path="res://materials/car_trimsheet/tire_mat.material" id="3_vwwuv"]
+[ext_resource type="Texture2D" uid="uid://bbjikvupdotnf" path="res://materials/new_noise_texture_2d.tres" id="4_iaawa"]
+[ext_resource type="Texture2D" uid="uid://bckg8my4yoy1l" path="res://materials/car_trimsheet/car_normal.png" id="5_wth74"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mni8g"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_ytjrq")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.099, 0.99, 0.6039, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(0, 0.0333333, 1, 1)
+shader_parameter/color_texture = ExtResource("3_64v70")
+shader_parameter/normal_map_texture = ExtResource("5_wth74")
+shader_parameter/noise_texture = ExtResource("4_iaawa")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dh7ip"]
 size = Vector3(1.4082, 1.94469, 3.64913)
@@ -10,7 +28,7 @@ size = Vector3(1.4082, 1.94469, 3.64913)
 [node name="car04" instance=ExtResource("1_k5wc8")]
 
 [node name="car04" parent="." index="0" groups=["npc_cars", "obstacle"]]
-surface_material_override/0 = ExtResource("2_2lv7v")
+surface_material_override/0 = SubResource("ShaderMaterial_mni8g")
 
 [node name="car04_l_f" parent="." index="1"]
 surface_material_override/0 = ExtResource("3_vwwuv")

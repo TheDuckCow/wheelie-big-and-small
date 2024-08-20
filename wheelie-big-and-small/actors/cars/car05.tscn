@@ -1,13 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://h2f0esfdcsp6"]
+[gd_scene load_steps=8 format=3 uid="uid://h2f0esfdcsp6"]
 
 [ext_resource type="PackedScene" uid="uid://bdw0t0d31cdkj" path="res://actors/cars/car05.glb" id="1_ta1tk"]
-[ext_resource type="Material" uid="uid://h1go4sooje1o" path="res://materials/car_trimsheet/car_shader.material" id="2_4kpiy"]
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="2_otyon"]
 [ext_resource type="Material" uid="uid://dc7ytoilodeeu" path="res://materials/car_trimsheet/tire_mat.material" id="3_2fqvp"]
+[ext_resource type="Texture2D" uid="uid://c704iyqjwj2bo" path="res://materials/car_trimsheet/car_albedo.png" id="3_c2mp8"]
+[ext_resource type="Texture2D" uid="uid://bbjikvupdotnf" path="res://materials/new_noise_texture_2d.tres" id="4_wafg3"]
+[ext_resource type="Texture2D" uid="uid://bckg8my4yoy1l" path="res://materials/car_trimsheet/car_normal.png" id="5_kvca1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qg22"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_otyon")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.099, 0.99, 0.17325, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 0.0166664, 1)
+shader_parameter/color_texture = ExtResource("3_c2mp8")
+shader_parameter/normal_map_texture = ExtResource("5_kvca1")
+shader_parameter/noise_texture = ExtResource("4_wafg3")
 
 [node name="car05" instance=ExtResource("1_ta1tk")]
 
 [node name="car05" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_4kpiy")
+surface_material_override/0 = SubResource("ShaderMaterial_7qg22")
 
 [node name="car05_l_b" parent="." index="1"]
 surface_material_override/0 = ExtResource("3_2fqvp")
