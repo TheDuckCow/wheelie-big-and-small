@@ -6,6 +6,7 @@ extends Control
 @onready var speedo_label := %speedo
 @onready var timer_label := %timer
 @onready var debug_label := %debug
+@onready var checkpoint_timer_label = %checkpoint_timer
 
 var debug := true
 
@@ -29,6 +30,10 @@ func _process(_delta: float) -> void:
 	
 	var elapsed:float = get_parent().run_time_msec()
 	timer_label.text = Data.format_time_msec(elapsed)
+	
+	checkpoint_timer_label.text = "Time left: %0.2f" % Data.checkpoint_timer_s
+
+	
 	var car_count = get_tree().get_nodes_in_group("npc_cars")
 	print("Cars? ", len(car_count))
 	debug_label.text = "Car count: %s" % len(car_count)

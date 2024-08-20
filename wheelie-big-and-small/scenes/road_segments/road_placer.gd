@@ -28,15 +28,66 @@ var Trees := [
 		load("res://models/wheelie_bits/tree_pine_bendy.tres"),
 		load("res://models/wheelie_bits/tree_pine_jagged.tres"),
 	]
+	
+
+var checkpoint_distance: float = 100.0 # Distance for checkpoints
+var next_checkpoint_position: float = checkpoint_distance
+var ended := false # Track whether the game has ended
+
+const checkpoint_scene := preload("res://actors/obstacles/checkpoint.tscn")
+var active_checkpoint: Node3D = null
 
 # other wheelie bits
-
+func _ready():
+	Data.checkpoint_timer_s = 5.0 # Start with 5 seconds
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	update_containers()
 	place_enviros()
+	
+	print("TIME LEFT: ", Data.checkpoint_timer_s)
+	# Update the timer
+	if not ended:
+		Data.checkpoint_timer_s -= delta
+		if Data.checkpoint_timer_s <= 0:
+			_end_game()
+		_check_spawn_checkpoint()
 
+func _check_spawn_checkpoint() -> void:
+	var cam = get_viewport().get_camera_3d()
+	var zpos = cam.global_transform.origin.z
+	print("POSITION: ", zpos)
+	if active_checkpoint and zpos <= active_checkpoint.global_transform.origin.z:
+		_respawn_checkpoint()
 
+	if zpos <= next_checkpoint_position:
+		_spawn_checkpoint()
+		next_checkpoint_position -= checkpoint_distance
+
+func _spawn_checkpoint() -> void:
+	Data.checkpoint_timer_s += 5.0
+	print("Checkpoint reached! Time added: 5 seconds")
+
+	# If there's an active checkpoint, remove it
+	if active_checkpoint:
+		active_checkpoint.queue_free()
+
+	active_checkpoint = checkpoint_scene.instantiate()
+	self.add_child(active_checkpoint)
+
+	var cam = get_viewport().get_camera_3d()
+	active_checkpoint.global_transform.origin = Vector3(0, 0, next_checkpoint_position)
+
+func _respawn_checkpoint() -> void:
+	if active_checkpoint:
+		active_checkpoint.global_transform.origin.z -= 100.0 # Move checkpoint further away
+
+func _end_game() -> void:
+	print("==================GAME ENDED Time's up!")
+	Signals.emit_signal("run_ended", self)
+	ended = true
+	
 func update_containers() -> void:
 	var cam := get_viewport().get_camera_3d()
 	var zpos = cam.global_transform.origin.z
