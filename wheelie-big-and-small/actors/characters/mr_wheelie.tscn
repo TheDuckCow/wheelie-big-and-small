@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn42dlyrwg01s"]
+
+[ext_resource type="PackedScene" uid="uid://7sdw8txxvdpf" path="res://models/characters/MrWheelie.glb" id="1_rwie2"]
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="2_2mm7q"]
+[ext_resource type="Script" path="res://actors/player_car/player_car.gd" id="2_67ng8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qv2o0"]
+render_priority = 0
+shader = ExtResource("2_2mm7q")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.554408, 0.000295619, 0.57593, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uy4fd"]
+render_priority = 0
+shader = ExtResource("2_2mm7q")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.000693897, 0.000693898, 0.000693897, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(0.00820202, 0.00820202, 0.00820202, 1)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdq6h"]
+render_priority = 0
+shader = ExtResource("2_2mm7q")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.0363387, 0.438515, 0.336567, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qom3g"]
+size = Vector3(0.569336, 0.675781, 1.5)
+
+[node name="MrWheelie2" instance=ExtResource("1_rwie2")]
+script = ExtResource("2_67ng8")
+
+[node name="MrWheelie" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="MrWheelie" index="0"]
+bones/1/position = Vector3(0.145918, 0.253358, 0.0222502)
+bones/1/rotation = Quaternion(-1.16859e-07, 2.35569e-08, -0.980281, 0.19761)
+bones/2/position = Vector3(0.145918, 0.326247, 0.0222502)
+bones/3/position = Vector3(0.026226, -1.79109e-08, 0.00800667)
+bones/3/rotation = Quaternion(-0.0150088, -0.0150086, 0.706948, 0.706948)
+bones/3/scale = Vector3(1, 1, 1)
+
+[node name="MrWheelieMesh" parent="MrWheelie/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_qv2o0")
+surface_material_override/1 = SubResource("ShaderMaterial_uy4fd")
+surface_material_override/2 = SubResource("ShaderMaterial_xdq6h")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "forward"
+
+[node name="CollisionShape" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.750488, 0.156375)
+shape = SubResource("BoxShape3D_qom3g")
+
+[node name="Pivot" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.939692, 0.34202, 0, -0.34202, 0.939692, 0, 1, 0.391842)

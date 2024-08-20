@@ -35,6 +35,7 @@ folder_colors={
 "res://actors/": "green",
 "res://addons/": "purple",
 "res://logic/": "red",
+"res://models/": "teal",
 "res://objects/": "orange",
 "res://scenes/": "blue",
 "res://ui/": "pink"

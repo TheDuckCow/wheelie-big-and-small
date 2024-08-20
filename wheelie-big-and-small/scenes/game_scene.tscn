@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cif8dm16hvfoe"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_dmcgd"]
-[ext_resource type="PackedScene" uid="uid://d4dfrt1dtg37l" path="res://actors/player_car/player_car.tscn" id="1_dwy4g"]
+[ext_resource type="PackedScene" uid="uid://cn42dlyrwg01s" path="res://actors/characters/mr_wheelie.tscn" id="3_cex78"]
 [ext_resource type="PackedScene" uid="uid://deeo68tbg3xv7" path="res://scenes/road_segments/road_piece_a.tscn" id="3_oy82i"]
 [ext_resource type="Script" path="res://scenes/road_segments/road_placer.gd" id="3_vo8t4"]
 [ext_resource type="PackedScene" uid="uid://gtq4rtkbl2cq" path="res://ui/hud.tscn" id="4_t4h14"]
@@ -16,8 +16,15 @@ background_color = Color(0.929715, 0.929715, 0.929715, 1)
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_dmcgd")
 
-[node name="PlayerCar" parent="." instance=ExtResource("1_dwy4g")]
+[node name="MrWheelie2" parent="." instance=ExtResource("3_cex78")]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90454, 10.8992)
+
+[node name="Skeleton3D" parent="MrWheelie2/MrWheelie" index="0"]
+bones/1/rotation = Quaternion(0, 1.19209e-07, 0, 1)
+bones/2/position = Vector3(0.145918, 0.253358, 0.0222502)
+bones/3/position = Vector3(-3.62502e-09, -3.35969e-09, -2.4804e-09)
+bones/3/rotation = Quaternion(-1.41895e-07, 2.66925e-08, 0.707107, 0.707107)
 
 [node name="enviros" type="Node3D" parent="."]
 
@@ -44,17 +51,19 @@ shadow_enabled = true
 environment = SubResource("Environment_20ldg")
 
 [node name="HUD" parent="." instance=ExtResource("4_t4h14")]
-target = NodePath("../PlayerCar")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." node_paths=PackedStringArray("target")]
 spring_length = 3.0
 margin = 0.5
 script = ExtResource("9_d2vaw")
-target = NodePath("../PlayerCar/Pivot")
-offset = Vector3(0, 0, 1)
+target = NodePath("../MrWheelie2/Pivot")
+offset = Vector3(0, 0, 0.5)
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 script = ExtResource("10_yq1xe")
+player = NodePath("../../MrWheelie2")
+min_fov = 60.0
+max_fov = 110.0
 
-[editable path="PlayerCar"]
+[editable path="MrWheelie2"]

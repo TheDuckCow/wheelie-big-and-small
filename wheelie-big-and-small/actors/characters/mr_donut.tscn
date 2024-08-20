@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtdkh5wijduyy"]
+
+[ext_resource type="PackedScene" uid="uid://cbk1uw5hsd5lv" path="res://models/characters/MrDonut.glb" id="1_ume2i"]
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="2_2xefy"]
+[ext_resource type="Script" path="res://actors/characters/mr_donut.gd" id="2_m6cco"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nx2jy"]
+render_priority = 0
+shader = ExtResource("2_2xefy")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.856973, 0.000656503, 0.869819, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbmo4"]
+render_priority = 0
+shader = ExtResource("2_2xefy")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0, 0.96011, 0.380197, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(1, 1, 1, 1)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0q6mc"]
+size = Vector3(0.5, 4, 2.2)
+
+[node name="MrDonut" instance=ExtResource("1_ume2i")]
+script = ExtResource("2_m6cco")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 7.41154e-22, 1)
+
+[node name="Torus" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_nx2jy")
+surface_material_override/1 = SubResource("ShaderMaterial_pbmo4")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "ArmatureAction"
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09686, 0)
+shape = SubResource("BoxShape3D_0q6mc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
