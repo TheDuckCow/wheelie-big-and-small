@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://742r3qy2hhp5"]
 
-[ext_resource type="PackedScene" uid="uid://bl387ct48ru38" path="res://actors/cars/car04.glb" id="1_k5wc8"]
+[ext_resource type="PackedScene" uid="uid://q8j7sq6u1jq4" path="res://actors/cars/car04.glb" id="1_k5wc8"]
 [ext_resource type="Material" uid="uid://h1go4sooje1o" path="res://materials/car_trimsheet/car_shader.material" id="2_2lv7v"]
 [ext_resource type="Material" uid="uid://dc7ytoilodeeu" path="res://materials/car_trimsheet/tire_mat.material" id="3_vwwuv"]
 

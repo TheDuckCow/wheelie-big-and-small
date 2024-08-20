@@ -133,6 +133,8 @@ func add_new_container(target_add_rp: RoadPoint) -> void:
 
 #func add_cars_to_lanes(container: RoadContainer) -> void:
 func add_cars_to_lanes(segments: Array) -> void:
+	if not is_inside_tree():
+		return
 	#var segments = container.get_segments()
 	print("Segments:", segments)
 	for seg in segments:

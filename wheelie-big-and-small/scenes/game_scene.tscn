@@ -29,12 +29,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
 [node name="base_enviro_sides3" parent="enviros" instance=ExtResource("5_r4vev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
 
-[node name="RoadManager" type="Node3D" parent="."]
+[node name="RoadPlacer" type="Node3D" parent="."]
 script = ExtResource("3_vo8t4")
 density = 8.0
 auto_refresh = false
 
-[node name="RoadStraight" parent="RoadManager" instance=ExtResource("3_oy82i")]
+[node name="RoadStraight" parent="RoadPlacer" instance=ExtResource("3_oy82i")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.565341, 0.685499, -0.458781, -1.48769e-08, 0.556194, 0.831052, 0.824858, 0.469828, -0.31444, 0, 4.06826, 0)
