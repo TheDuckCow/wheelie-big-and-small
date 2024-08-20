@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=4 uid="uid://bqcgea6d5l4sa"]
+[gd_scene load_steps=6 format=4 uid="uid://bqcgea6d5l4sa"]
+
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="1_oxgnp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n0o3"]
 resource_name = "Fuscia"
@@ -41,7 +43,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_radr2")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3w81"]
+render_priority = 0
+shader = ExtResource("1_oxgnp")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.483646, 0, 0.0959687, 1)
+shader_parameter/col_dark = Color(0, 0, 0, 1)
+shader_parameter/col_light = Color(0.96, 0.768, 0, 1)
+shader_parameter/col_star = Color(1, 0, 1, 1)
+
 [node name="SPIRAL - TALL TAPERED" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4399, 0, 0.000592709)
 mesh = SubResource("ArrayMesh_orcoi")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_q3w81")

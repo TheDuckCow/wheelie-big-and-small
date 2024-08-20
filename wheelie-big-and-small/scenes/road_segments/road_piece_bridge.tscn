@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmp7s4kdopcyr"]
+
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_6leno"]
+[ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_elos8"]
+[ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_ijm2s"]
+[ext_resource type="PackedScene" uid="uid://cnef1hn5llg6o" path="res://scenes/road_segments/bridge_1_src.tscn" id="3_tsorb"]
+[ext_resource type="PackedScene" uid="uid://2simdt241l4j" path="res://models/wheelie_bits/sign_circle.tscn" id="5_boj18"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b6ytw"]
+size = Vector3(27.8337, 1.53256, 16.1456)
+
+[node name="RoadStraight" type="Node3D"]
+script = ExtResource("1_6leno")
+material_resource = ExtResource("2_elos8")
+create_geo = false
+use_lowpoly_preview = true
+generate_ai_lanes = true
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_target_dirs = Array[int]([-1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="Bridge_1" parent="." instance=ExtResource("3_tsorb")]
+transform = Transform3D(3.473, 0, 0, 0, 3.473, 0, 0, 0, 3.473, 0, 0.386198, 0.0693111)
+
+[node name="RP_001" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 27.8033)
+script = ExtResource("3_ijm2s")
+traffic_dir = [1, 1, 1, 1]
+lanes = [0, 3, 3, 2]
+gutter_profile = Vector2(2, -0.1)
+prior_pt_init = NodePath("../RP_002")
+
+[node name="RP_002" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -27.7993)
+script = ExtResource("3_ijm2s")
+traffic_dir = [1, 1, 1, 1]
+lanes = [0, 3, 3, 2]
+gutter_profile = Vector2(2, -0.1)
+next_pt_init = NodePath("../RP_001")
+prior_mag = 16.0
+next_mag = 16.0
+
+[node name="SIGN-CIRCLE" parent="." instance=ExtResource("5_boj18")]
+transform = Transform3D(2.17845, 1.66724, -5.96251e-07, 0, -9.81056e-07, -2.74323, -1.66724, 2.17845, -7.79074e-07, -8.64854, 0.3473, 23.7801)
+
+[node name="SIGN-CIRCLE2" parent="." instance=ExtResource("5_boj18")]
+transform = Transform3D(2.22561, -1.60374, 5.73543e-07, 0, -9.81056e-07, -2.74323, 1.60374, 2.22561, -7.9594e-07, 9.54355, 0.3473, 23.7801)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.983306, -0.181961, 0, 0.181961, 0.983306, 0, 0, -20.5748)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.997826, 0.0659082, 0, -0.0659082, 0.997826, 0.11438, 0.983512, 1.25525)
+shape = SubResource("BoxShape3D_b6ytw")

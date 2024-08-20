@@ -31,12 +31,15 @@ var target_scale: float = 1.0
 func _ready() -> void:
 	var res = Signals.run_ended.connect(on_run_ended)
 	assert(res == OK)
+	velocity.z = MIN_SPEED
 	
 
 
 func _physics_process(delta: float) -> void:
 	# update progress:
 	Data.run_distance_m = abs(global_transform.origin.z - init_offset)
+	if abs(velocity.z) < MIN_SPEED - 1:
+		Signals.run_ended.emit(self)
 	
 	if global_transform.origin.y < 0 and state == State.RUNNING:
 		Signals.run_ended.emit(self)

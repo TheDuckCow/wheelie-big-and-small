@@ -5,6 +5,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2p7w"]
 transparency = 1
+shading_mode = 0
 albedo_texture = ExtResource("2_gxp5a")
 uv1_scale = Vector3(3, 2, 1)
 

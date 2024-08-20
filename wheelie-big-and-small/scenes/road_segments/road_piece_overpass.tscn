@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dj1pyuediw00s"]
+[gd_scene load_steps=14 format=3 uid="uid://dj1pyuediw00s"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_8yndm"]
 [ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_wnpn7"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_2q6hj"]
 [ext_resource type="Texture2D" uid="uid://c6otl6kasyq43" path="res://materials/mephis-pattern-8.jpg" id="4_p0ww5"]
+[ext_resource type="PackedScene" uid="uid://bqcgea6d5l4sa" path="res://models/wheelie_bits/spiral_tall_tapered.tscn" id="5_l4kww"]
 [ext_resource type="Script" path="res://actors/obstacles/death_doors.gd" id="5_tfnkr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_w5jof"]
@@ -95,6 +96,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_x5obb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="overpass_root/round2/StaticBody3D2"]
 shape = SubResource("ConcavePolygonShape3D_sq8xq")
+
+[node name="SPIRAL - TALL TAPERED" parent="overpass_root" instance=ExtResource("5_l4kww")]
+transform = Transform3D(6.41795, 0, 0, 0, 6.41795, 0, 0, 0, 6.41795, -39.948, 0, -11.8786)
 
 [node name="DeathBar" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.288, 7.52083)

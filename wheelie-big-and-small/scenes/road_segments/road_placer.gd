@@ -11,6 +11,7 @@ const RoadScenes = [
 	"res://scenes/road_segments/road_piece_doors.tscn",
 	"res://scenes/road_segments/road_piece_overpass.tscn",
 	"res://scenes/road_segments/road_piece_random_speed_bump.tscn",
+	"res://scenes/road_segments/road_piece_bridge.tscn",
 ]
 
 var Cars = [
@@ -27,8 +28,14 @@ const tree_placer := preload("res://models/wheelie_collections/floor_multi_insta
 var Trees := [
 		load("res://models/wheelie_bits/tree_pine_bendy.tres"),
 		load("res://models/wheelie_bits/tree_pine_jagged.tres"),
+		load("res://models/wheelie_bits/tree_pine_twist.tres"),
+		load("res://models/wheelie_bits/tree_round_1.tres"),
 	]
+
+var DoDads := [
 	
+]
+
 
 var checkpoint_distance: float = 100.0 # Distance for checkpoints
 var next_checkpoint_position: float = checkpoint_distance

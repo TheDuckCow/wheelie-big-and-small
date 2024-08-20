@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwkm7mqhwe4ob"]
+[gd_scene load_steps=10 format=3 uid="uid://cwkm7mqhwe4ob"]
 
 [ext_resource type="PackedScene" uid="uid://th33bg2apfgu" path="res://actors/cars/car01.glb" id="1_1nh2b"]
 [ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="2_l6t5b"]
 [ext_resource type="Texture2D" uid="uid://c704iyqjwj2bo" path="res://materials/car_trimsheet/car_albedo.png" id="3_blye8"]
-[ext_resource type="Texture2D" uid="uid://bbjikvupdotnf" path="res://materials/new_noise_texture_2d.tres" id="4_8xydi"]
 [ext_resource type="Material" uid="uid://dc7ytoilodeeu" path="res://materials/car_trimsheet/tire_mat.material" id="4_242ib"]
 [ext_resource type="Texture2D" uid="uid://bckg8my4yoy1l" path="res://materials/car_trimsheet/car_normal.png" id="5_yenw8"]
 
@@ -20,15 +19,21 @@ shader_parameter/col_light = Color(1, 1, 1, 1)
 shader_parameter/col_star = Color(0.810118, 0.572295, 0.0975097, 1)
 shader_parameter/color_texture = ExtResource("3_blye8")
 shader_parameter/normal_map_texture = ExtResource("5_yenw8")
-shader_parameter/noise_texture = ExtResource("4_8xydi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qo4j5"]
-size = Vector3(1.43652, 2.18874, 3.03019)
+size = Vector3(1.43652, 2.02601, 3.03019)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gh7xl"]
+size = Vector3(0.210999, 0.550049, 2.2533)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qaopk"]
+size = Vector3(0.210999, 0.550049, 2.13965)
 
 [node name="car01" groups=["npc_cars", "obstacle"] instance=ExtResource("1_1nh2b")]
 base_mesh_path = NodePath("car012")
 
 [node name="car012" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0503395, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_ev6ha")
 
 [node name="car01_tire_r_f" parent="." index="1"]
@@ -44,5 +49,13 @@ surface_material_override/0 = ExtResource("4_242ib")
 surface_material_override/0 = ExtResource("4_242ib")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11081, -0.28004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19217, -0.28004)
 shape = SubResource("BoxShape3D_qo4j5")
+
+[node name="wheels" type="CollisionShape3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70465, 0.280757, -0.122375)
+shape = SubResource("BoxShape3D_gh7xl")
+
+[node name="wheels2" type="CollisionShape3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723159, 0.280757, -0.179199)
+shape = SubResource("BoxShape3D_qaopk")

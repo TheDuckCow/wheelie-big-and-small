@@ -1,17 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgu3fhw46jmdm"]
+[gd_scene load_steps=7 format=3 uid="uid://bgu3fhw46jmdm"]
 
 [ext_resource type="PackedScene" uid="uid://bp4pi45fw0kp7" path="res://actors/cars/car02.glb" id="1_7uogo"]
 [ext_resource type="Material" uid="uid://h1go4sooje1o" path="res://materials/car_trimsheet/car_shader.material" id="2_7robg"]
 [ext_resource type="Material" uid="uid://dc7ytoilodeeu" path="res://materials/car_trimsheet/tire_mat.material" id="3_r3m7b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jxkua"]
-size = Vector3(1.4082, 2.09759, 5.7797)
+size = Vector3(1.4082, 1.82372, 5.7797)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cnfvo"]
+size = Vector3(0.210999, 0.550049, 3.33496)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_414th"]
+size = Vector3(0.210999, 0.550049, 3.33496)
 
 [node name="car02" groups=["npc_cars", "obstacle"] instance=ExtResource("1_7uogo")]
 base_mesh_path = NodePath("car02")
 
 [node name="car02" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.080683, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147408, 0)
 surface_material_override/0 = ExtResource("2_7robg")
 
 [node name="car02_tire_r_b" parent="." index="1"]
@@ -27,5 +33,13 @@ surface_material_override/0 = ExtResource("3_r3m7b")
 surface_material_override/0 = ExtResource("3_r3m7b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08138, 1.27098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21831, 1.27098)
 shape = SubResource("BoxShape3D_jxkua")
+
+[node name="wheels" type="CollisionShape3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.626857, 0.280757, 0.418457)
+shape = SubResource("BoxShape3D_cnfvo")
+
+[node name="wheels2" type="CollisionShape3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669568, 0.280757, 0.418457)
+shape = SubResource("BoxShape3D_414th")

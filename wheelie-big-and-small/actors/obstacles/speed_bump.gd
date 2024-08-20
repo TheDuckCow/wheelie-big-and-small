@@ -16,5 +16,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is not PlayerCar:
 		return
 	var car:PlayerCar = body
-	if car.get_speed() > 5:
-		car.set_speed(5)
+	if car.get_speed() > PlayerCar.MIN_SPEED:
+		car.set_speed(PlayerCar.MIN_SPEED)

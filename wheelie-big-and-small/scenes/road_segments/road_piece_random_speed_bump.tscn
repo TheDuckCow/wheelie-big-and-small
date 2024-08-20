@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://drjkxd8c53qpw"]
+[gd_scene load_steps=8 format=3 uid="uid://drjkxd8c53qpw"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_6onf3"]
 [ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_cskd0"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_ec45n"]
 [ext_resource type="Script" path="res://actors/obstacles/random_speed_bump.gd" id="4_in0ba"]
 [ext_resource type="PackedScene" uid="uid://c0uvck8pqvfku" path="res://actors/obstacles/speed_bump.tscn" id="4_mkigk"]
+[ext_resource type="PackedScene" uid="uid://blb61i2rojnuq" path="res://models/wheelie_bits/box_tall_pink_and_green.tscn" id="6_cdq2k"]
+[ext_resource type="PackedScene" uid="uid://bidldowydklhr" path="res://models/wheelie_bits/sign_slash.tscn" id="7_6gruh"]
 
 [node name="RoadRandomBumps" type="Node3D"]
 script = ExtResource("1_6onf3")
@@ -52,3 +54,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17349, 0.945729, -6.32027)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.995162, 0, 0.098243, 0, 1, 0, -0.098243, 0, -0.995162, 9.83327, 0, -34.3918)
+
+[node name="BOX - TALL - PINK AND GREEN" parent="." instance=ExtResource("6_cdq2k")]
+transform = Transform3D(2.21775, 0, 0, 0, 2.21775, 0, 0, 0, 2.21775, 14.8053, 3.36554, 3.66957)
+
+[node name="SIGN-SLASH" parent="." instance=ExtResource("7_6gruh")]
+transform = Transform3D(1.94772, 0, 0, 0, -6.96559e-07, -1.94772, 0, 1.94772, -6.96559e-07, -10.0752, 1.69533, -4.97167)
+
+[node name="SIGN-SLASH2" parent="." instance=ExtResource("7_6gruh")]
+transform = Transform3D(1.94772, 0, 0, 0, -6.96559e-07, -1.94772, 0, 1.94772, -6.96559e-07, 10.2299, 1.69533, -4.97167)

@@ -6,6 +6,7 @@ class_name NpcCar
 
 
 func _ready() -> void:
+	velocity = -global_transform.basis.z * speed
 	if base_mesh_path:
 		randomize_car_mat()
 
@@ -33,6 +34,9 @@ func randomize_car_mat():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	if abs(velocity.z) < 5:
+		queue_free()
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	velocity = -global_transform.basis.z * speed
@@ -41,3 +45,4 @@ func _physics_process(delta: float) -> void:
 	var cam = get_viewport().get_camera_3d()
 	if global_transform.origin.z > cam.global_transform.origin.z + 20:
 		queue_free()
+	
