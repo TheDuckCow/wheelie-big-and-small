@@ -38,7 +38,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# update progress:
 	Data.run_distance_m = abs(global_transform.origin.z - init_offset)
-	if abs(velocity.z) < MIN_SPEED - 1:
+	if abs(velocity.z) < MIN_SPEED - 1: # and Data.current_score_msec > 1000:
 		Signals.run_ended.emit(self)
 	
 	if global_transform.origin.y < 0 and state == State.RUNNING:

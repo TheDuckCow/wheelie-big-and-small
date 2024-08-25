@@ -38,6 +38,7 @@ prior_mag = 16.0
 next_mag = 16.0
 
 [node name="RandomSpeedBump" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.70382)
 script = ExtResource("4_in0ba")
 
 [node name="SpeedBump" parent="RandomSpeedBump" instance=ExtResource("4_mkigk")]
@@ -59,7 +60,7 @@ transform = Transform3D(-0.995162, 0, 0.098243, 0, 1, 0, -0.098243, 0, -0.995162
 transform = Transform3D(2.21775, 0, 0, 0, 2.21775, 0, 0, 0, 2.21775, 14.8053, 3.36554, 3.66957)
 
 [node name="SIGN-SLASH" parent="." instance=ExtResource("7_6gruh")]
-transform = Transform3D(1.94772, 0, 0, 0, -6.96559e-07, -1.94772, 0, 1.94772, -6.96559e-07, -10.0752, 1.69533, -4.97167)
+transform = Transform3D(1.94772, 0, 0, 0, -6.96559e-07, -1.94772, 0, 1.94772, -6.96559e-07, -10.0752, 1.69533, 1.73215)
 
 [node name="SIGN-SLASH2" parent="." instance=ExtResource("7_6gruh")]
-transform = Transform3D(1.94772, 0, 0, 0, -6.96559e-07, -1.94772, 0, 1.94772, -6.96559e-07, 10.2299, 1.69533, -4.97167)
+transform = Transform3D(1.94772, 0, 0, 0, -6.96559e-07, -1.94772, 0, 1.94772, -6.96559e-07, 10.2299, 1.69533, 1.73215)

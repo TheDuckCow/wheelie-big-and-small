@@ -1,8 +1,86 @@
-[gd_scene load_steps=3 format=3 uid="uid://v6ym7a7wen8r"]
+[gd_scene load_steps=6 format=3 uid="uid://v6ym7a7wen8r"]
 
 [ext_resource type="PackedScene" uid="uid://yy4ye6xrco2r" path="res://models/checkpoint.tscn" id="1_ki04r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s3kck"]
+
+[sub_resource type="Animation" id="Animation_pb6t6"]
+resource_name = "appear"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Checkpoint:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-1.45309, -0.25, 0, 0.049875, 0.0323502, -0.0700084, -0.283458, -0.842813, 0.0832083, 0.242558, 0.242558, -0.14089, -0.0147141, 0.0787051, -0.00355098, 0, -0.116792, 0.00813311, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.733333, 0.966667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Checkpoint:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.98831, -0.25, 0, 0.25, 0, 1.5191, -0.25, 0, 0.25, 0, 1.5191, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.533333, 0.966667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Checkpoint:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.414757, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.533333, 0.966667)
+}
+
+[sub_resource type="Animation" id="Animation_6bopu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Checkpoint:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Checkpoint:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.5191, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Checkpoint:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i14qr"]
+_data = {
+"RESET": SubResource("Animation_6bopu"),
+"appear": SubResource("Animation_pb6t6")
+}
 
 [node name="checkpoint" type="Node3D"]
 
@@ -13,3 +91,9 @@ mesh = SubResource("BoxMesh_s3kck")
 
 [node name="Checkpoint" parent="." instance=ExtResource("1_ki04r")]
 transform = Transform3D(3.35274, 0, 0, 0, 3.35274, 0, 0, 0, 3.35274, 0, 1.5191, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i14qr")
+}
+autoplay = "appear"
