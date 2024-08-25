@@ -16,6 +16,6 @@ func _process(_delta):
 		# Map the speed to the FOV range
 		var target_fov = lerp(min_fov, max_fov, speed / max_speed)
 		
-		print(target_fov)
+		#print("fov: ", target_fov)
 		# Set the camera's FOV
 		self.fov = target_fov

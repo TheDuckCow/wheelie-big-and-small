@@ -125,7 +125,9 @@ func set_speed(input: float) -> void:
 	velocity.z = -abs(input)
 
 
-func on_run_ended(obstacle) -> void:
+func on_run_ended(_obstacle) -> void:
+	if state == State.ENDED:
+		return
 	state = State.ENDED
 	animation_player.play("ended")
 	

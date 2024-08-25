@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is PlayerCar:
+		print("Sped up by Mr. Donut")
 		if abs(body.velocity.z) < SPEEDUP:
 			body.velocity.z = -SPEEDUP
 		queue_free()

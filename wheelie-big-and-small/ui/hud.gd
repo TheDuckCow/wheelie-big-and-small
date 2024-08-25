@@ -19,7 +19,6 @@ func _ready() -> void:
 		debug_label.show()
 	else:
 		debug_label.hide()
-	
 
 
 func _process(_delta: float) -> void:
@@ -35,7 +34,6 @@ func _process(_delta: float) -> void:
 
 	
 	var car_count = get_tree().get_nodes_in_group("npc_cars")
-	print("Cars? ", len(car_count))
 	debug_label.text = "Car count: %s" % len(car_count)
 	
 	if Input.is_action_just_pressed("ui_cancel"):

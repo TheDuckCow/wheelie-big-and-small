@@ -10,8 +10,7 @@ func _ready() -> void:
 		high_score_label.hide()
 	else:
 		high_score_label.show()
-		high_score_label.text = "High score: %.1f" % Data.high_score_m
-	
+		high_score_label.text = "Record: %.1f" % Data.high_score_m
 
 
 func _process(_delta: float) -> void:
