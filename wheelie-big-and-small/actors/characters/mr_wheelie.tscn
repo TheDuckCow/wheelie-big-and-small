@@ -48,10 +48,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="Skeleton3D" parent="MrWheelie" index="0"]
 bones/1/position = Vector3(0.145918, 0.253358, 0.0222502)
-bones/1/rotation = Quaternion(-1.16859e-07, 2.35569e-08, -0.980281, 0.19761)
-bones/2/position = Vector3(0.145918, 0.326247, 0.0222502)
-bones/3/position = Vector3(0.026226, -1.79109e-08, 0.00800667)
-bones/3/rotation = Quaternion(-0.0150088, -0.0150086, 0.706948, 0.706948)
+bones/2/position = Vector3(0.145918, 0.253358, 0.0222502)
+bones/3/position = Vector3(-3.62502e-09, -3.35969e-09, -2.4804e-09)
+bones/3/rotation = Quaternion(-1.41895e-07, 2.66925e-08, 0.707107, 0.707107)
 
 [node name="MrWheelieMesh" parent="MrWheelie/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_qv2o0")

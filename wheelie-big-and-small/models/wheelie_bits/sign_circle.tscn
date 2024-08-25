@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://2simdt241l4j"]
+[gd_scene load_steps=10 format=4 uid="uid://2simdt241l4j"]
 
 [ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="1_qxsde"]
+[ext_resource type="Texture2D" uid="uid://bdc16woxlemmc" path="res://ui/grow_icon.png" id="2_6irnn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpkbr"]
 resource_name = "Black"
@@ -123,3 +124,9 @@ surface_material_override/2 = SubResource("ShaderMaterial_gko32")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dk2v7")
+
+[node name="grow_icon" type="Sprite3D" parent="."]
+transform = Transform3D(1.29652, -2.84217e-14, 0, 1.19209e-07, -5.66729e-08, 1.29652, -1.42109e-14, -1.29652, -5.66729e-08, -3.01871e-10, 0.0566378, -1.89029)
+double_sided = false
+alpha_cut = 2
+texture = ExtResource("2_6irnn")

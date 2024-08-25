@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://27tfincc4xg2"]
+[gd_scene load_steps=9 format=4 uid="uid://27tfincc4xg2"]
 
 [ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="1_cnkyb"]
+[ext_resource type="Texture2D" uid="uid://dy3njyydlgsg" path="res://ui/shrink_icon.png" id="2_2o3c0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpkbr"]
 resource_name = "Black"
@@ -76,8 +77,8 @@ shader = ExtResource("1_cnkyb")
 shader_parameter/speed = null
 shader_parameter/angle = null
 shader_parameter/angle2 = null
-shader_parameter/col = Color(0.476424, 0.0963688, 0.0655484, 1)
-shader_parameter/col_dark = Color(0.324153, 0, 0.0487776, 1)
+shader_parameter/col = Color(0.502685, 0.0347543, 4.81308e-08, 1)
+shader_parameter/col_dark = Color(0.469567, 0, 0.0560712, 1)
 shader_parameter/col_light = Color(1, 1, 1, 1)
 shader_parameter/col_star = Color(1, 0, 1, 0)
 
@@ -85,7 +86,7 @@ shader_parameter/col_star = Color(1, 0, 1, 0)
 size = Vector3(1, 0.125977, 3.1853)
 
 [node name="SIGN-TRIANGLE" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0)
+transform = Transform3D(1.18302, 0, 0, 0, -4.23081e-07, -1.18302, 0, 1.18302, -4.23081e-07, 0, 0, 0)
 mesh = SubResource("ArrayMesh_1246v")
 skeleton = NodePath("")
 surface_material_override/1 = SubResource("ShaderMaterial_e1ayo")
@@ -95,3 +96,9 @@ surface_material_override/1 = SubResource("ShaderMaterial_e1ayo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84217e-14, -1.09265)
 shape = SubResource("BoxShape3D_c3hf5")
+
+[node name="shrink" type="Sprite3D" parent="."]
+transform = Transform3D(1.10119, -2.41398e-14, 0, 1.0125e-07, -4.81347e-08, 1.10119, -1.20699e-14, -1.10119, -4.81347e-08, 0, 0.0415117, -1.76161)
+double_sided = false
+alpha_cut = 2
+texture = ExtResource("2_2o3c0")
