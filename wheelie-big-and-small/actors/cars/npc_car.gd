@@ -36,6 +36,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if abs(velocity.z) < 5:
 		queue_free()
+	if global_transform.origin.y > 1:
+		queue_free()
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta

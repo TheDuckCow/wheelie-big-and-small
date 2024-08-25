@@ -20,7 +20,7 @@ script = ExtResource("1_dmcgd")
 
 [node name="MrWheelie2" parent="." instance=ExtResource("3_cex78")]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90454, 10.8992)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16938, 10.8992)
 
 [node name="Skeleton3D" parent="MrWheelie2/MrWheelie" index="0"]
 bones/1/rotation = Quaternion(0, 1.19209e-07, 0, 1)

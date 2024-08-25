@@ -29,9 +29,9 @@ func _process(_delta: float) -> void:
 	speedo_label.text = "Speed: %s" % display_speed
 	
 	#var elapsed:float = get_parent().run_time_msec()
-	distance_label.text = "Distance: %.1f m" % Data.run_distance_m # format_time_msec(elapsed)
+	distance_label.text = "Score: %.1f m" % Data.run_distance_m # format_time_msec(elapsed)
 	
-	checkpoint_timer_label.text = "Time left: %0.2f" % Data.checkpoint_timer_s
+	checkpoint_timer_label.text = "Time: %0.2f" % Data.checkpoint_timer_s
 
 	
 	var car_count = get_tree().get_nodes_in_group("npc_cars")

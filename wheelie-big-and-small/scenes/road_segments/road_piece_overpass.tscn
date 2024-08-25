@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dj1pyuediw00s"]
+[gd_scene load_steps=16 format=3 uid="uid://dj1pyuediw00s"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_8yndm"]
 [ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_wnpn7"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c6otl6kasyq43" path="res://materials/mephis-pattern-8.jpg" id="4_p0ww5"]
 [ext_resource type="PackedScene" uid="uid://bqcgea6d5l4sa" path="res://models/wheelie_bits/spiral_tall_tapered.tscn" id="5_l4kww"]
 [ext_resource type="Script" path="res://actors/obstacles/death_doors.gd" id="5_tfnkr"]
+[ext_resource type="Script" path="res://actors/obstacles/random_speed_bump.gd" id="7_yc6s6"]
+[ext_resource type="PackedScene" uid="uid://c0uvck8pqvfku" path="res://actors/obstacles/speed_bump.tscn" id="8_4l32s"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_w5jof"]
 size = Vector3(35, 5, 15)
@@ -44,7 +46,7 @@ edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002")])
 edge_rp_local_dirs = Array[int]([0, 1])
 
 [node name="RP_001" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 17.4108)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 18.7262)
 script = ExtResource("3_2q6hj")
 traffic_dir = [1, 1, 1, 1]
 lanes = [0, 3, 3, 2]
@@ -109,5 +111,21 @@ script = ExtResource("5_tfnkr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathBar/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.229741, -0.31777)
 shape = SubResource("BoxShape3D_3i38n")
+
+[node name="RandomSpeedBump" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.3559)
+script = ExtResource("7_yc6s6")
+
+[node name="SpeedBump" parent="RandomSpeedBump" instance=ExtResource("8_4l32s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84478, 0.945729, -1.56345)
+
+[node name="SpeedBump2" parent="RandomSpeedBump" instance=ExtResource("8_4l32s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11468, 0.945729, -1.56345)
+
+[node name="SpeedBump3" parent="RandomSpeedBump" instance=ExtResource("8_4l32s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93337, 0.945729, -1.56345)
+
+[node name="SpeedBump4" parent="RandomSpeedBump" instance=ExtResource("8_4l32s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17349, 0.945729, -1.56345)
 
 [connection signal="body_entered" from="DeathBar/Area3D" to="DeathBar" method="_on_area_3d_body_entered"]
