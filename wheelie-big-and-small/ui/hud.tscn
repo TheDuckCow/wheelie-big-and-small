@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://gtq4rtkbl2cq"]
+[gd_scene load_steps=9 format=3 uid="uid://gtq4rtkbl2cq"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_s62w8"]
+[ext_resource type="Texture2D" uid="uid://dll13w4fo0ig5" path="res://ui/record_icon.png" id="2_17jxt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8clkx"]
 bg_color = Color(0.403922, 0.796078, 0.886275, 0)
@@ -89,18 +90,6 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="distance" type="Label" parent="Control"]
-unique_name_in_owner = true
-layout_mode = 1
-offset_right = 139.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 40
-text = "Speed: "
-horizontal_alignment = 1
-
 [node name="speedo" type="Label" parent="Control"]
 unique_name_in_owner = true
 visible = false
@@ -125,3 +114,35 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 40
 text = "Speed: "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+offset_right = 139.0
+offset_bottom = 55.0
+
+[node name="distance" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 40
+text = "Speed: "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_17jxt")
+stretch_mode = 5
+
+[node name="record" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 40
+text = "record "
+horizontal_alignment = 1

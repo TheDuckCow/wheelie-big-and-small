@@ -6,6 +6,7 @@ extends Control
 @onready var speedo_label := %speedo
 @onready var distance_label := %distance
 @onready var debug_label := %debug
+@onready var record_label := %record
 @onready var checkpoint_timer_label = %checkpoint_timer
 
 var debug := false
@@ -19,6 +20,11 @@ func _ready() -> void:
 		debug_label.show()
 	else:
 		debug_label.hide()
+	if Data.high_score_m > 0:
+		record_label.text = "%.1f" %Data.high_score_m
+	else:
+		var parrow = record_label.get_parent_control()
+		parrow.hide()
 
 
 func _process(_delta: float) -> void:
