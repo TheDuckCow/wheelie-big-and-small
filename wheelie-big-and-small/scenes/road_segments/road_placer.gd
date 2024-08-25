@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	update_containers()
 	place_enviros()
 	
-	print("TIME LEFT: ", Data.checkpoint_timer_s)
+	#print("TIME LEFT: ", Data.checkpoint_timer_s)
 	# Update the timer
 	if not ended:
 		Data.checkpoint_timer_s -= delta
@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 func _check_spawn_checkpoint() -> void:
 	var cam = get_viewport().get_camera_3d()
 	var zpos = cam.global_transform.origin.z
-	print("POSITION: ", zpos)
+	#print("POSITION: ", zpos)
 	if active_checkpoint and zpos <= active_checkpoint.global_transform.origin.z:
 		_respawn_checkpoint()
 
@@ -162,7 +162,7 @@ func update_containers() -> void:
 
 
 func add_new_container(target_add_rp: RoadPoint) -> void:
-	print("Add new container for RP ", target_add_rp)
+	#print("Add new container for RP ", target_add_rp)
 	randomize()
 	var load_path:String = RoadScenes.pick_random()
 	var scn: PackedScene = load(load_path)
@@ -184,7 +184,6 @@ func add_new_container(target_add_rp: RoadPoint) -> void:
 
 	var offset:Vector3 = new_rp.global_transform.origin - target_add_rp.global_transform.origin
 	new_container.global_transform.origin -= offset
-	print("Now add cars..?")
 	var res = new_container.on_road_updated.connect(add_cars_to_lanes)
 	assert(res == OK)
 
@@ -193,7 +192,6 @@ func add_new_container(target_add_rp: RoadPoint) -> void:
 func add_cars_to_lanes(segments: Array) -> void:
 	if not is_inside_tree():
 		return
-	print("Segments:", segments)
 	for seg in segments:
 		var lanes:Array = seg.get_lanes()
 		if not lanes:

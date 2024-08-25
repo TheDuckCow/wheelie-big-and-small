@@ -24,9 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16938, 10.8992)
 
 [node name="Skeleton3D" parent="MrWheelie2/MrWheelie" index="0"]
 bones/1/rotation = Quaternion(0, 1.19209e-07, 0, 1)
-bones/2/position = Vector3(0.145918, 0.253358, 0.0222502)
-bones/3/position = Vector3(-3.62502e-09, -3.35969e-09, -2.4804e-09)
-bones/3/rotation = Quaternion(-1.41895e-07, 2.66925e-08, 0.707107, 0.707107)
 
 [node name="enviros" type="Node3D" parent="."]
 

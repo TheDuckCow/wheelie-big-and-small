@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	if abs(velocity.z) < MIN_SPEED - 1: # and Data.current_score_msec > 1000:
 		Signals.run_ended.emit(self)
 	
-	if global_transform.origin.y < 0 and state == State.RUNNING:
+	if global_transform.origin.y < -0.1 and state == State.RUNNING:
 		Signals.run_ended.emit(self)
 		state = State.ENDED
 		return
@@ -125,7 +125,9 @@ func set_speed(input: float) -> void:
 	velocity.z = -abs(input)
 
 
-func on_run_ended(obstacle) -> void:
+func on_run_ended(_obstacle) -> void:
+	if state == State.ENDED:
+		return
 	state = State.ENDED
 	animation_player.play("ended")
 	

@@ -39,11 +39,11 @@ func run_time_s() -> float:
 
 
 func _run_ended(source_node: Node) -> void:
-	print("The run was ended by: ", source_node)
 	if ended:
-		print("Was already ended...")
+		#print("Was already ended...")
 		return
-	
+	print("The run was ended by: ", source_node)
+
 	# For some pizzaz, show the stars in the shader
 	# (tried animating it, but that did not go well [major stutter]
 	road_mat.set_shader_parameter("col_star", Color("ff4df3"))

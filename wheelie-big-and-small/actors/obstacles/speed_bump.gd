@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print("We hit a speed bump!")
+	print("Hit speed bump")
 	if body is not PlayerCar:
 		return
 	var car:PlayerCar = body

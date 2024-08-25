@@ -6,6 +6,7 @@ extends Control
 @onready var speedo_label := %speedo
 @onready var distance_label := %distance
 @onready var debug_label := %debug
+@onready var record_label := %record
 @onready var checkpoint_timer_label = %checkpoint_timer
 
 var debug := false
@@ -19,7 +20,11 @@ func _ready() -> void:
 		debug_label.show()
 	else:
 		debug_label.hide()
-	
+	if Data.high_score_m > 0:
+		record_label.text = "%.1f" %Data.high_score_m
+	else:
+		var parrow = record_label.get_parent_control()
+		parrow.hide()
 
 
 func _process(_delta: float) -> void:
@@ -35,7 +40,6 @@ func _process(_delta: float) -> void:
 
 	
 	var car_count = get_tree().get_nodes_in_group("npc_cars")
-	print("Cars? ", len(car_count))
 	debug_label.text = "Car count: %s" % len(car_count)
 	
 	if Input.is_action_just_pressed("ui_cancel"):
