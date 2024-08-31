@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://deeo68tbg3xv7"]
+[gd_scene load_steps=8 format=3 uid="uid://deeo68tbg3xv7"]
 
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_container.gd" id="1_1ewx6"]
 [ext_resource type="Material" uid="uid://clyc7ic3l3k4j" path="res://materials/road_mat_memphis.material" id="2_0g42l"]
 [ext_resource type="Script" path="res://addons/road-generator/nodes/road_point.gd" id="3_3k3s3"]
 [ext_resource type="PackedScene" uid="uid://dtdkh5wijduyy" path="res://actors/characters/mr_donut.tscn" id="4_n6k3k"]
+[ext_resource type="Script" path="res://actors/obstacles/random_speed_bump.gd" id="5_0ls73"]
 [ext_resource type="PackedScene" uid="uid://blb61i2rojnuq" path="res://models/wheelie_bits/box_tall_pink_and_green.tscn" id="5_ctij3"]
+[ext_resource type="PackedScene" uid="uid://oqueukmcaay8" path="res://models/wheelie_bits/traffic_cone.tscn" id="7_wdauh"]
 
 [node name="RoadStraight" type="Node3D"]
 script = ExtResource("1_1ewx6")
@@ -35,11 +37,40 @@ next_pt_init = NodePath("../RP_001")
 prior_mag = 16.0
 next_mag = 16.0
 
-[node name="MrDonut" parent="." instance=ExtResource("4_n6k3k")]
-transform = Transform3D(0.0938129, 0, -0.99559, 0, 1, 0, 0.99559, 0, 0.0938129, -1.23939, 1, 17.3178)
-
 [node name="BOX - TALL - PINK AND GREEN" parent="." instance=ExtResource("5_ctij3")]
 transform = Transform3D(2.6249, 0, 0, 0, 2.6249, 0, 0, 0, 2.6249, -21.9273, 5.68832, 3.32285)
 
 [node name="BOX - TALL - PINK AND GREEN2" parent="." instance=ExtResource("5_ctij3")]
 transform = Transform3D(-3.87606, 0, 2.11602, 0, 4.41603, 0, -2.11602, 0, -3.87606, 24.7837, 5.68832, -27.5948)
+
+[node name="RandomDonut" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.5126)
+script = ExtResource("5_0ls73")
+
+[node name="MrDonut" parent="RandomDonut" instance=ExtResource("4_n6k3k")]
+transform = Transform3D(0.0938129, 0, -0.99559, 0, 1, 0, 0.99559, 0, 0.0938129, -1.84478, 1.94573, -1.56345)
+
+[node name="MrDonut2" parent="RandomDonut" instance=ExtResource("4_n6k3k")]
+transform = Transform3D(0.0938129, 0, -0.99559, 0, 1, 0, 0.99559, 0, 0.0938129, 6.17349, 1.94573, -1.56345)
+
+[node name="MrDonut3" parent="RandomDonut" instance=ExtResource("4_n6k3k")]
+transform = Transform3D(0.0938129, 0, -0.99559, 0, 1, 0, 0.99559, 0, 0.0938129, -5.93337, 1.94573, -1.56345)
+
+[node name="MrDonut4" parent="RandomDonut" instance=ExtResource("4_n6k3k")]
+transform = Transform3D(0.0938129, 0, -0.99559, 0, 1, 0, 0.99559, 0, 0.0938129, 2.11468, 1.94573, -1.56345)
+
+[node name="Random Cones" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.0925)
+script = ExtResource("5_0ls73")
+
+[node name="TRAFFIC-CONE" parent="Random Cones" instance=ExtResource("7_wdauh")]
+transform = Transform3D(0.0938129, 0, -0.99559, 0, 1, 0, 0.99559, 0, 0.0938129, -2.64218, 0.99674, -0.422069)
+
+[node name="TRAFFIC-CONE2" parent="Random Cones" instance=ExtResource("7_wdauh")]
+transform = Transform3D(0.225223, 0, -0.974307, 0, 1, 0, 0.974307, 0, 0.225223, 7.07294, 0.99674, -2.14561)
+
+[node name="TRAFFIC-CONE4" parent="Random Cones" instance=ExtResource("7_wdauh")]
+transform = Transform3D(-0.308668, 0, -0.95117, 0, 1, 0, 0.95117, 0, -0.308668, -5.93337, 0.99674, -1.56345)
+
+[node name="TRAFFIC-CONE3" parent="Random Cones" instance=ExtResource("7_wdauh")]
+transform = Transform3D(0.275956, 0, -0.96117, 0, 1, 0, 0.96117, 0, 0.275956, 2.79915, 0.99674, -2.98695)
