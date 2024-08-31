@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://cic3wpknl0u0g"]
+
+[ext_resource type="PackedScene" uid="uid://do4agpokjw8rv" path="res://models/characters/linton.glb" id="1_2ewk2"]
+[ext_resource type="ArrayMesh" uid="uid://c1nl3ga0cwdqp" path="res://models/characters/linton.tres" id="2_it41b"]
+[ext_resource type="Shader" path="res://materials/base_shader.gdshader" id="2_o0thf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bowv3"]
+render_priority = 0
+shader = ExtResource("2_o0thf")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.31, 0.147818, 0.0837, 1)
+shader_parameter/col_dark = Color(0.0919619, 0.0587126, 0.00623079, 1)
+shader_parameter/col_light = Color(1, 1, 1, 0)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptu4x"]
+render_priority = 0
+shader = ExtResource("2_o0thf")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.293035, 0.295554, 0.0858921, 1)
+shader_parameter/col_dark = Color(0.0414811, 0.0224262, 0.00226864, 1)
+shader_parameter/col_light = Color(1, 1, 1, 0)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oef5e"]
+render_priority = 0
+shader = ExtResource("2_o0thf")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.0837, 0.0987866, 0.31, 1)
+shader_parameter/col_dark = Color(0.0414811, 0.0224262, 0.00226864, 1)
+shader_parameter/col_light = Color(1, 1, 1, 0)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avts0"]
+render_priority = 0
+shader = ExtResource("2_o0thf")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.302457, 0.0837, 0.31, 1)
+shader_parameter/col_dark = Color(0.144534, 0.0306683, 0.022715, 1)
+shader_parameter/col_light = Color(1, 1, 1, 0)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yyl8h"]
+render_priority = 0
+shader = ExtResource("2_o0thf")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.0837, 0.31, 0.0874717, 1)
+shader_parameter/col_dark = Color(0.00466164, 0.16263, 0.0574877, 1)
+shader_parameter/col_light = Color(1, 1, 1, 0)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v5ow"]
+render_priority = 0
+shader = ExtResource("2_o0thf")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.172634, 0.295873, 0.0827411, 1)
+shader_parameter/col_dark = Color(0.0632131, 0.176868, 0.0729684, 1)
+shader_parameter/col_light = Color(1, 1, 1, 0)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrwp4"]
+render_priority = 0
+shader = ExtResource("2_o0thf")
+shader_parameter/speed = null
+shader_parameter/angle = null
+shader_parameter/angle2 = null
+shader_parameter/col = Color(0.0837, 0.283598, 0.31, 1)
+shader_parameter/col_dark = Color(0.00309658, 0.0958669, 0.0769492, 1)
+shader_parameter/col_light = Color(1, 1, 1, 0)
+shader_parameter/col_star = Color(1, 0, 1, 0)
+
+[node name="linton" instance=ExtResource("1_2ewk2")]
+
+[node name="Cylinder" parent="." index="0"]
+mesh = ExtResource("2_it41b")
+surface_material_override/0 = SubResource("ShaderMaterial_bowv3")
+surface_material_override/1 = SubResource("ShaderMaterial_ptu4x")
+surface_material_override/2 = SubResource("ShaderMaterial_oef5e")
+surface_material_override/3 = SubResource("ShaderMaterial_avts0")
+surface_material_override/4 = SubResource("ShaderMaterial_yyl8h")
+surface_material_override/5 = SubResource("ShaderMaterial_7v5ow")
+surface_material_override/6 = SubResource("ShaderMaterial_qrwp4")
