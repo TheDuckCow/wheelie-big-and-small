@@ -19,5 +19,6 @@ assets/
 # Default file included in repo to avoid warnings, but generally should
 # always be generated locally by exporters, thus changes ignored.
 src/build_info.cfg
+devlog/
 
 wheelie-big-and-small/.godot/**
