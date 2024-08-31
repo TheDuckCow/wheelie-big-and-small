@@ -1,38 +1,58 @@
 # Wheelie Big and Small
 
-Pitch: Infinite runner/driving game, where your vehicle's size is tied to your speed and you have navigate obstacles
+An endless running game, where your character's size is tied to your speed and you have navigate obstacles
 
 
-## Game design
+Just another endless runner? Well, hold onto your unicycle seat - because this one has a funky twist.  Your player's size is tied to your speed. Go faster to make it over sparsely slatted bridges, but slow down to fit inside tunnels and cross speed bumps. Size matters!
 
-- Your vehicle's size is tied to your speed, the faster you go the larger you are
-- But colliding into things cuts size in half! And makes you much slower
-- Along with obstacles of varying sizes which enforce either minimum or maximum sizes, you need to adjust your speed accordingly and quickly enough
+Reach the next checkpoint in time to get a time boost, and see how far you can push your high score!
+
+Play the game live here:
+
+https://theduckcow.itch.io/wheelie-big-and-small
+
+## Controls: 
+
+- Up arrow/w to accelerate and get BIGGER
+- Down arrow/s to slow down and get SMALLER
+- Left arrow/a and right arrow/d to steer left/right
+- Esc to end your run to retry
+
+## Obstacles/interactions:
+
+- Avoid cars by swerving aside - or get small enough to fit under!
+- Go fast to get over slatted bridge
+- Go slow to fit under overpass
+- Go slow to fit between the slit of death
+- Use speed bumps to slow down, and MrDonut to speed up
+- Go fast to reach the next checkpoint in time!
+
+## The team
+
+- Felix - character modeling
+- [TheDuckCow](https://github.com/TheDuckCow) (Patrick W. Crawford) - coding, animation, project plan
+- [ogbog](https://github.com/ogbog) (Oscar) - 3D art
+- [robocognito](https://github.com/robocognito) (Sean Siem) - 3D art
+- [vertenflow](http://github.com/vertenflow) (Joseph Masaki) - shading, modeling, peer programmer
+- [arthifact](https://itch.io/profile/arthifact) (Isaac Alonso) - coding
 
 
-How do you lose/end the run?
-- Hit a blocking obstacle of any kind (regardless of size)
-  - Too small you get squashed by another car
-  - Run into a barrier blatantly
-- Reach a maximum-size limiting feature while too large
-  - Tunnels and overpasses
-  - Or you get too large and you get stuck off the road (maybe)
-  - Speed bumps, except they don't end your run, but just nerf you down to a specific speed
-- Reach a minimum-size limiting feature while too small
-  - Cross a metal bridge that has grating that's too small and you fall into water
-  - Ramp / jump, which have signage to indicate the minimum speed to make the jump "You must be [30mph/kmh] large to pass" etc
-  - Tollbooth similar to the above
+## Credits
 
-User inputs:
-- Accelerate or brake (no reverse)
-- Turn more left or more right; not full 360 turning control, more arcade leaning towards one side or the other (again, infinite runner style, see #DRIVE game)
+- Godot Road Generator (also made by TheDuckCow) ([link](https://github.com/TheDuckCow/godot-road-generator))
+- 8-bit Memphis Patterns Pack ([link](https://pixelbuddha.net/download/freebie/827-8-bit-memphis-patterns-pack))
+- Everything else created by the team, including shaders, models, and animations
 
+## Tech stack
 
-Replay incentives
-- Score for how far you got
-- Maybe a time limit, so you can compare scores / compare your personal best
+Made in Godot 4.3, modeling in Blender 4.2/4.3 and 3ds Max 2015. Published to single-threaded web on itch.io
 
 
 ## Art style direction
 
-- Memphis style, [see here](https://99designs.com/blog/design-history-movements/memphis-design/)
+Memphis group style, [see here](https://99designs.com/blog/design-history-movements/memphis-design/)
+
+
+## License
+
+All assets are being released as CC0 here.
