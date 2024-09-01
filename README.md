@@ -40,6 +40,7 @@ https://theduckcow.itch.io/wheelie-big-and-small
 ## Credits
 
 - Godot Road Generator (also made by TheDuckCow) ([link](https://github.com/TheDuckCow/godot-road-generator))
+- Mobile touch input via Virtual-Joystick-Godot ([link](https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot))
 - 8-bit Memphis Patterns Pack ([link](https://pixelbuddha.net/download/freebie/827-8-bit-memphis-patterns-pack))
 - Everything else created by the team, including shaders, models, and animations
 
