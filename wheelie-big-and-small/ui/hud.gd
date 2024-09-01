@@ -8,6 +8,7 @@ extends Control
 @onready var debug_label := %debug
 @onready var record_label := %record
 @onready var checkpoint_timer_label = %checkpoint_timer
+@onready var joystick := %joystick
 
 var debug := false
 
@@ -25,6 +26,13 @@ func _ready() -> void:
 	else:
 		var parrow = record_label.get_parent_control()
 		parrow.hide()
+	
+	if not DisplayServer.is_touchscreen_available():
+		joystick.queue_free()
+	else:
+		# Without this, dying while tilted starts off with a
+		# tilt until pressing again
+		joystick.scene._reset()
 
 
 func _process(_delta: float) -> void:

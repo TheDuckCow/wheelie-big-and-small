@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://gtq4rtkbl2cq"]
+[gd_scene load_steps=10 format=3 uid="uid://gtq4rtkbl2cq"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_s62w8"]
 [ext_resource type="Texture2D" uid="uid://dll13w4fo0ig5" path="res://ui/record_icon.png" id="2_17jxt"]
+[ext_resource type="Script" path="res://addons/virtual_joystick/virtual_joystick_instantiator.gd" id="3_yuu1o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8clkx"]
 bg_color = Color(0.403922, 0.796078, 0.886275, 0)
@@ -146,3 +147,21 @@ theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 40
 text = "record "
 horizontal_alignment = 1
+
+[node name="mobile" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="joystick" type="Control" parent="mobile"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_yuu1o")

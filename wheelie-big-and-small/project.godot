@@ -29,7 +29,7 @@ project/assembly_name="Wheelie Big and Small"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/road-generator/plugin.cfg")
+enabled=PackedStringArray("res://addons/road-generator/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
 
 [file_customization]
 
